@@ -24,7 +24,7 @@
 
 
 /* Includes ------------------------------------------------------------------*/
-#define FREQ_MASTER 	16000000 	// 16MHz
+#define FREQUENZA_MASTER 	16000000 	// 16MHz
 
 #define PWMfreq						50000
 
@@ -44,7 +44,7 @@
 #define RUN								5
 
 //#define  SOUND_DEBUG 
-
+#define INDIRIZZO_MEMORIA	0x4000
 #define OPTION_BYTE_AFR		0x4803   // Alternate function remapping option byte
 #define AFR0							0x01     //Alternate function remapping bit 0 */
 

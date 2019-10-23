@@ -25,6 +25,7 @@
 /* Exported constants --------------------------------------------------------*/
 /* Includes ------------------------------------------------------------------*/
 
+#define INDIRIZZO_MEMORIA	0x4000
 #define OPTION_BYTE_AFR		0x4803   // Alternate function remapping option byte
 #define AFR0							0x01     //Alternate function remapping bit 0 */
 

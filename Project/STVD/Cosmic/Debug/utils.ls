@@ -31,18 +31,18 @@
   48  0016 00            	dc.b	0
   49  0017               _S2_IN:
   50  0017 00            	dc.b	0
-  84                     ; 43 void inputRead(void)
-  84                     ; 44 {
+  84                     ; 45 void inputRead(void)
+  84                     ; 46 {
   86                     .text:	section	.text,new
   87  0000               _inputRead:
-  91                     ; 45 	S1[4]=S1[3];
+  91                     ; 47 	S1[4]=S1[3];
   93  0000 451213        	mov	_S1+4,_S1+3
-  94                     ; 46 	S1[3]=S1[2];
+  94                     ; 48 	S1[3]=S1[2];
   96  0003 451112        	mov	_S1+3,_S1+2
-  97                     ; 47 	S1[2]=S1[1];
+  97                     ; 49 	S1[2]=S1[1];
   99  0006 451011        	mov	_S1+2,_S1+1
- 100                     ; 48 	S1[1]=S1[0];	
- 102                     ; 49 	S1[0]=			((GPIO_ReadInputPin(GPIOD, GPIO_PIN_6))>>6)&0b00000001;
+ 100                     ; 50 	S1[1]=S1[0];	
+ 102                     ; 51 	S1[0]=			((GPIO_ReadInputPin(GPIOD, GPIO_PIN_6))>>6)&0b00000001;
  104  0009 ae0040        	ldw	x,#64
  105  000c 450f10        	mov	_S1+1,_S1
  106  000f 89            	pushw	x
@@ -57,7 +57,7 @@
  116  001e 9f            	ld	a,xl
  117  001f a401          	and	a,#1
  118  0021 b70f          	ld	_S1,a
- 119                     ; 50 	if ((S1[4]==S1[3])&&(S1[3]==S1[2])&&(S1[2]==S1[1])&&(S1[1]==S1[0]))
+ 119                     ; 52 	if ((S1[4]==S1[3])&&(S1[3]==S1[2])&&(S1[2]==S1[1])&&(S1[1]==S1[0]))
  121  0023 b613          	ld	a,_S1+4
  122  0025 b112          	cp	a,_S1+3
  123  0027 2615          	jrne	L12
@@ -70,17 +70,17 @@
  133  0035 b610          	ld	a,_S1+1
  134  0037 b10f          	cp	a,_S1
  135  0039 2603          	jrne	L12
- 136                     ; 52 		S1_IN = S1[4];
+ 136                     ; 54 		S1_IN = S1[4];
  138  003b 451316        	mov	_S1_IN,_S1+4
  139  003e               L12:
- 140                     ; 54 	S2[4]=S2[3];
+ 140                     ; 56 	S2[4]=S2[3];
  142  003e 450d0e        	mov	_S2+4,_S2+3
- 143                     ; 55 	S2[3]=S2[2];
+ 143                     ; 57 	S2[3]=S2[2];
  145  0041 450c0d        	mov	_S2+3,_S2+2
- 146                     ; 56 	S2[2]=S2[1];
+ 146                     ; 58 	S2[2]=S2[1];
  148  0044 450b0c        	mov	_S2+2,_S2+1
- 149                     ; 57 	S2[1]=S2[0];	
- 151                     ; 58 	S2[0]=			((GPIO_ReadInputPin(GPIOA, GPIO_PIN_2))>>2)&0b00000001;
+ 149                     ; 59 	S2[1]=S2[0];	
+ 151                     ; 60 	S2[0]=			((GPIO_ReadInputPin(GPIOA, GPIO_PIN_2))>>2)&0b00000001;
  153  0047 ae0004        	ldw	x,#4
  154  004a 450a0b        	mov	_S2+1,_S2
  155  004d 89            	pushw	x
@@ -92,7 +92,7 @@
  162  0058 9f            	ld	a,xl
  163  0059 a401          	and	a,#1
  164  005b b70a          	ld	_S2,a
- 165                     ; 59 	if ((S2[4]==S2[3])&&(S2[3]==S2[2])&&(S2[2]==S2[1])&&(S2[1]==S2[0]))
+ 165                     ; 61 	if ((S2[4]==S2[3])&&(S2[3]==S2[2])&&(S2[2]==S2[1])&&(S2[1]==S2[0]))
  167  005d b60e          	ld	a,_S2+4
  168  005f b10d          	cp	a,_S2+3
  169  0061 2615          	jrne	L32
@@ -105,19 +105,19 @@
  179  006f b60b          	ld	a,_S2+1
  180  0071 b10a          	cp	a,_S2
  181  0073 2603          	jrne	L32
- 182                     ; 61 		S2_IN = S2[4];
+ 182                     ; 63 		S2_IN = S2[4];
  184  0075 450e17        	mov	_S2_IN,_S2+4
  185  0078               L32:
- 186                     ; 63 }
+ 186                     ; 65 }
  189  0078 81            	ret	
- 227                     ; 65 uint8_t dipRead(uint8_t type)
- 227                     ; 66 {
+ 227                     ; 67 uint8_t dipRead(uint8_t type)
+ 227                     ; 68 {
  228                     .text:	section	.text,new
  229  0000               _dipRead:
  231  0000 88            	push	a
  232       00000001      OFST:	set	1
- 235                     ; 67 	switch (type)
- 238                     ; 81 		break;		
+ 235                     ; 69 	switch (type)
+ 238                     ; 83 		break;		
  239  0001 4d            	tnz	a
  240  0002 2707          	jreq	L52
  241  0004 4a            	dec	a
@@ -125,8 +125,8 @@
  243  0007 b602          	ld	a,_dip_IN
  244  0009 2068          	jra	L15
  245  000b               L52:
- 246                     ; 69 		case 0:
- 246                     ; 70 			dipA[0] = !(((GPIO_ReadInputPin(GPIOB, GPIO_PIN_5))>>5)&0b00000001);
+ 246                     ; 71 		case 0:
+ 246                     ; 72 			dipA[0] = !(((GPIO_ReadInputPin(GPIOB, GPIO_PIN_5))>>5)&0b00000001);
  248  000b ae0020        	ldw	x,#32
  249  000e ad7a          	call	LC004
  250  0010 54            	srlw	x
@@ -138,7 +138,7 @@
  256  0019 4f            	clr	a
  257  001a               L22:
  258  001a b707          	ld	_dipA,a
- 259                     ; 71 			dipA[1] = !(((GPIO_ReadInputPin(GPIOB, GPIO_PIN_4))>>4)&0b00000001);
+ 259                     ; 73 			dipA[1] = !(((GPIO_ReadInputPin(GPIOB, GPIO_PIN_4))>>4)&0b00000001);
  261  001c ae0010        	ldw	x,#16
  262  001f ad69          	call	LC004
  263  0021 ad53          	call	LC002
@@ -149,7 +149,7 @@
  268  0029 4f            	clr	a
  269  002a               L03:
  270  002a b708          	ld	_dipA+1,a
- 271                     ; 72 			dipA[2] = !(((GPIO_ReadInputPin(GPIOC, GPIO_PIN_3))>>3)&0b00000001);
+ 271                     ; 74 			dipA[2] = !(((GPIO_ReadInputPin(GPIOC, GPIO_PIN_3))>>3)&0b00000001);
  273  002c ae0008        	ldw	x,#8
  274  002f ad4e          	call	LC003
  275  0031 ad43          	call	LC002
@@ -160,7 +160,7 @@
  280  0039 4f            	clr	a
  281  003a               L63:
  282  003a b709          	ld	_dipA+2,a
- 283                     ; 73 			dip_IN = (dipA[0]+(dipA[1]<<1)+(dipA[2]<<2));
+ 283                     ; 75 			dip_IN = (dipA[0]+(dipA[1]<<1)+(dipA[2]<<2));
  285  003c 48            	sll	a
  286  003d 48            	sll	a
  287  003e 6b01          	ld	(OFST+0,sp),a
@@ -168,11 +168,11 @@
  289  0042 48            	sll	a
  290  0043 bb07          	add	a,_dipA
  291  0045 1b01          	add	a,(OFST+0,sp)
- 292                     ; 74 		break;
+ 292                     ; 76 		break;
  294  0047 2028          	jp	LC001
  295  0049               L72:
- 296                     ; 76 		case 1:
- 296                     ; 77 			dipB[0] = !(((GPIO_ReadInputPin(GPIOC, GPIO_PIN_4))>>4)&0b00000001);
+ 296                     ; 78 		case 1:
+ 296                     ; 79 			dipB[0] = !(((GPIO_ReadInputPin(GPIOC, GPIO_PIN_4))>>4)&0b00000001);
  298  0049 ae0010        	ldw	x,#16
  299  004c ad31          	call	LC003
  300  004e 54            	srlw	x
@@ -184,7 +184,7 @@
  306  0057 4f            	clr	a
  307  0058               L44:
  308  0058 b705          	ld	_dipB,a
- 309                     ; 78 			dipB[1] = !(((GPIO_ReadInputPin(GPIOC, GPIO_PIN_5))>>5)&0b00000001);
+ 309                     ; 80 			dipB[1] = !(((GPIO_ReadInputPin(GPIOC, GPIO_PIN_5))>>5)&0b00000001);
  311  005a ae0020        	ldw	x,#32
  312  005d ad20          	call	LC003
  313  005f 54            	srlw	x
@@ -197,16 +197,16 @@
  320  0069 4f            	clr	a
  321  006a               L25:
  322  006a b706          	ld	_dipB+1,a
- 323                     ; 79 			dip_IN = (dipB[0]+(dipB[1]<<1));
+ 323                     ; 81 			dip_IN = (dipB[0]+(dipB[1]<<1));
  325  006c 48            	sll	a
  326  006d bb05          	add	a,_dipB
- 327                     ; 80 			dip_IN = dip_IN + 8;
+ 327                     ; 82 			dip_IN = dip_IN + 8;
  329  006f ab08          	add	a,#8
  330  0071               LC001:
  331  0071 b702          	ld	_dip_IN,a
- 332                     ; 81 		break;		
+ 332                     ; 83 		break;		
  334  0073               L15:
- 335                     ; 83 	return dip_IN;
+ 335                     ; 85 	return dip_IN;
  339  0073 5b01          	addw	sp,#1
  340  0075 81            	ret	
  341  0076               LC002:
@@ -233,97 +233,97 @@
  364  0093 54            	srlw	x
  365  0094 54            	srlw	x
  366  0095 81            	ret	
- 397                     ; 86 void UpdateTask(void)
- 397                     ; 87 {
+ 397                     ; 88 void UpdateTask(void)
+ 397                     ; 89 {
  398                     .text:	section	.text,new
  399  0000               _UpdateTask:
- 403                     ; 88   if (timeout500msISR)
+ 403                     ; 90   if (timeout500msISR)
  405  0000 be0e          	ldw	x,_timeout500msISR
  406  0002 270a          	jreq	L36
- 407                     ; 90 		timeout500ms = 1;
+ 407                     ; 92 		timeout500ms = 1;
  409  0004 ae0001        	ldw	x,#1
  410  0007 bf06          	ldw	_timeout500ms,x
- 411                     ; 91 		timeout500msISR = 0;
+ 411                     ; 93 		timeout500msISR = 0;
  413  0009 5f            	clrw	x
  414  000a bf0e          	ldw	_timeout500msISR,x
  416  000c 2003          	jra	L56
  417  000e               L36:
- 418                     ; 93 	else timeout500ms = 0;
+ 418                     ; 95 	else timeout500ms = 0;
  420  000e 5f            	clrw	x
  421  000f bf06          	ldw	_timeout500ms,x
  422  0011               L56:
- 423                     ; 95   if (timeout50msISR)
+ 423                     ; 97   if (timeout50msISR)
  425  0011 be0c          	ldw	x,_timeout50msISR
  426  0013 270a          	jreq	L76
- 427                     ; 97 		timeout50ms = 1;
+ 427                     ; 99 		timeout50ms = 1;
  429  0015 ae0001        	ldw	x,#1
  430  0018 bf04          	ldw	_timeout50ms,x
- 431                     ; 98 		timeout50msISR = 0;
+ 431                     ; 100 		timeout50msISR = 0;
  433  001a 5f            	clrw	x
  434  001b bf0c          	ldw	_timeout50msISR,x
  436  001d 2003          	jra	L17
  437  001f               L76:
- 438                     ; 100 	else timeout50ms = 0;
+ 438                     ; 102 	else timeout50ms = 0;
  440  001f 5f            	clrw	x
  441  0020 bf04          	ldw	_timeout50ms,x
  442  0022               L17:
- 443                     ; 102   if (timeout10msISR)
+ 443                     ; 104   if (timeout10msISR)
  445  0022 be0a          	ldw	x,_timeout10msISR
  446  0024 270a          	jreq	L37
- 447                     ; 104 		timeout10ms = 1;
+ 447                     ; 106 		timeout10ms = 1;
  449  0026 ae0001        	ldw	x,#1
  450  0029 bf02          	ldw	_timeout10ms,x
- 451                     ; 105 		timeout10msISR = 0;
+ 451                     ; 107 		timeout10msISR = 0;
  453  002b 5f            	clrw	x
  454  002c bf0a          	ldw	_timeout10msISR,x
  456  002e 2003          	jra	L57
  457  0030               L37:
- 458                     ; 107 	else timeout10ms = 0;
+ 458                     ; 109 	else timeout10ms = 0;
  460  0030 5f            	clrw	x
  461  0031 bf02          	ldw	_timeout10ms,x
  462  0033               L57:
- 463                     ; 109 	if (timeout1msISR)
+ 463                     ; 111 	if (timeout1msISR)
  465  0033 be08          	ldw	x,_timeout1msISR
  466  0035 2709          	jreq	L77
- 467                     ; 111 		timeout1ms = 1;
+ 467                     ; 113 		timeout1ms = 1;
  469  0037 ae0001        	ldw	x,#1
  470  003a bf00          	ldw	_timeout1ms,x
- 471                     ; 112 		timeout1msISR = 0;
+ 471                     ; 114 		timeout1msISR = 0;
  473  003c 5f            	clrw	x
  474  003d bf08          	ldw	_timeout1msISR,x
  477  003f 81            	ret	
  478  0040               L77:
- 479                     ; 114 	else timeout1ms = 0;
+ 479                     ; 116 	else timeout1ms = 0;
  481  0040 5f            	clrw	x
  482  0041 bf00          	ldw	_timeout1ms,x
- 483                     ; 115 }
+ 483                     ; 117 }
  486  0043 81            	ret	
  517                     .const:	section	.text
  518  0000               L27:
  519  0000 0000c350      	dc.l	50000
- 520                     ; 117 void init_setup(void)
- 520                     ; 118 {
+ 520                     ; 119 void init_setup(void)
+ 520                     ; 120 {
  521                     .text:	section	.text,new
  522  0000               _init_setup:
- 526                     ; 119 	clock_setup();
+ 526                     ; 121 	clock_setup();
  528  0000 cd0000        	call	_clock_setup
- 530                     ; 120 	GPIO_setup();
+ 530                     ; 122 	GPIO_setup();
  532  0003 cd0000        	call	_GPIO_setup
- 534                     ; 123 	TIM1_setup();
+ 534                     ; 125 	TIM1_setup();
  536  0006 cd0000        	call	_TIM1_setup
- 538                     ; 124 	TIM2_setup();
+ 538                     ; 126 	TIM2_setup();
  540  0009 cd0000        	call	_TIM2_setup
- 542                     ; 125 	TIM4_setup();
+ 542                     ; 127 	TIM4_setup();
  544  000c cd0000        	call	_TIM4_setup
- 546                     ; 126 	enableInterrupts();
+ 546                     ; 128 	enableInterrupts();
  549  000f 9a            	rim	
- 551                     ; 131 	for(j=0;j<50000;j++)// serve per stabilizzare la lettura dei pin all'acccensione
+ 551                     ; 133 	for(j=0;j<50000;j++)// serve per stabilizzare la lettura dei pin all'acccensione
  554  0010 5f            	clrw	x
  555  0011 bf00          	ldw	_j,x
  556  0013               L311:
- 557                     ; 132 	{nop();}
+ 557                     ; 134 	{nop();}
  560  0013 9d            	nop	
- 562                     ; 131 	for(j=0;j<50000;j++)// serve per stabilizzare la lettura dei pin all'acccensione
+ 562                     ; 133 	for(j=0;j<50000;j++)// serve per stabilizzare la lettura dei pin all'acccensione
  565  0014 be00          	ldw	x,_j
  566  0016 5c            	incw	x
  567  0017 bf00          	ldw	_j,x
@@ -331,7 +331,7 @@
  572  001c ae0000        	ldw	x,#L27
  573  001f cd0000        	call	c_lcmp
  575  0022 2fef          	jrslt	L311
- 576                     ; 133 }
+ 576                     ; 135 }
  579  0024 81            	ret	
  826                     	switch	.ubsct
  827  0000               _j:

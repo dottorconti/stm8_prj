@@ -1,12 +1,4 @@
 
-//***********************SOUND*********************/
-//	File: sound.c
-//  Author: Contiero Enrico
-//	email: enrico.contiero29@gmail.com
-//	Date: 24/10/19
-//	Revision: 1.0
-//*************************************************/
-
 #include "stm8s.h"
 #include "stm8s_gpio.h"
 #include "stm8s_adc1.h"
@@ -16,7 +8,9 @@
 #include "utils.h"
 #include "sound.h"
 
-
+//***********************SOUND*********************/
+//	Rev 1.0
+//*************************************************/
 	
 /*Valori già convertiti con Fmaster 16Mhz*/
 
@@ -31,7 +25,6 @@ uint16_t 	cnt 				= 0;
 uint8_t 	n 					= 0;
 uint8_t 	t 					= 1;
 bool 			songStep 		= 0;
-uint16_t 	BPMv 				= 0;
 
 //uint16_t scale_song[15] = {DO4, 100, RE4, 100, MI4, 100, FA4, 100, SOL4, 100, LA4, 100, SI4, 100, END};
 
@@ -150,39 +143,14 @@ switch (num)
 }
 
 //------======******Function definitions******======------
-void song(uint16_t note[])
-{
-	switch (songStep)
-	{
-		case 0:
-		if (note[n]  != MUTE)
-		{
-			TIM1_SetAutoreload(note[n]);
-		}			
-		TIM1_SetCompare4(note[n]/duty);
-		cnt++;
-		if (cnt >= note[t])
-		{
-			cnt = 0;
-			n		=	n + 2;
-			t		=	t + 2;
-			songStep = 1;
-		}
-		if (note[n] == END)
-		{
-			n = 0;
-			t = 1;
-		}
-	}
 
-}
-void setFrequency( uint32_t f1)
+void monofrequenza ( uint32_t f1)
 {
 	TIM1_SetAutoreload(f1);
 	TIM1_SetCompare4(f1/duty);
 }
 
-void pause(void)
+void pausa(void)
 {
 	TIM1_SetCompare4(0);
 }

@@ -1,6 +1,6 @@
 /*
   ******************************************************************************
-  * @file     sound.h
+  * @file     utils.h
 
   ******************************************************************************
 */ 
@@ -51,13 +51,12 @@
 extern uint8_t 		duty;
 extern uint16_t 	caseCnt;
 
-
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */	
 
 void soundStone(uint8_t num);
-void setFrequency( uint32_t f1);
-void pause(void);
+void monofrequenza ( uint32_t f1);
+void pausa(void);
 void sweep500_1k2(void);
 void sweep2k_2k8(void);
 void sweep2k_2k8_reverse(void);

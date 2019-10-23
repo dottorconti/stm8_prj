@@ -249,7 +249,6 @@ BEEP_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	479;"	typedef
 BEEP_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	475;"	struct
 BKR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	638;"	member	struct:TIM1_struct
 BPM	..\..\sound.h	41;"	macro
-BPMv	..\..\sound.c	31;"	variable
 BRR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1766;"	member	struct:UART1_struct
 BRR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1864;"	member	struct:UART2_struct
 BRR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1971;"	member	struct:UART3_struct
@@ -3151,7 +3150,7 @@ __I	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	205;"	macro
 __INIT_H__	..\..\init.h	11;"	macro
 __IO	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	207;"	macro
 __MAIN_H	..\..\main.h	22;"	macro
-__MODS0__	..\..\..\..\..\program files (x86)\cosmic\cxstm8_eval\hstm8\mods0.h	11;"	macro
+__MODS0__	..\..\..\..\..\..\..\program files (x86)\cosmic\cxstm8_eval\hstm8\mods0.h	11;"	macro
 __O	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	206;"	macro
 __SOUND_H__	..\..\sound.h	12;"	macro
 __STM8S_ADC1_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_adc1.h	29;"	macro
@@ -3186,15 +3185,15 @@ assert_failed	..\..\init.c	231;"	function	signature:(uint8_t* file, uint32_t lin
 assert_failed	..\..\stm8s_conf.h	105;"	prototype	signature:(uint8_t* file, uint32_t line)
 assert_param	..\..\stm8s_conf.h	103;"	macro
 assert_param	..\..\stm8s_conf.h	107;"	macro
-audio_test	..\..\sound.h	65;"	prototype	signature:(void)
-birthday_song	..\..\sound.c	39;"	variable
+audio_test	..\..\sound.h	64;"	prototype	signature:(void)
+birthday_song	..\..\sound.c	35;"	variable
 blink	..\..\utils.c	31;"	variable
 bool	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	230;"	typedef	typeref:enum:__anon1
-caseCnt	..\..\sound.c	24;"	variable
-cct	..\..\sound.c	22;"	variable
+caseCnt	..\..\sound.c	21;"	variable
+cct	..\..\sound.c	19;"	variable
 clock_setup	..\..\init.c	12;"	function	signature:(void)
 clock_setup	..\..\init.h	38;"	prototype	signature:(void)
-cnt	..\..\sound.c	27;"	variable
+cnt	..\..\sound.c	24;"	variable
 cntCheck	..\..\main.c	33;"	variable
 count	..\..\stm8s_it.c	50;"	variable
 counter10ms	..\..\utils.c	30;"	variable
@@ -3211,15 +3210,15 @@ dip_IN	..\..\utils.c	41;"	variable
 disableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2716;"	macro
 disableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2725;"	macro
 disableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2735;"	macro
-duty	..\..\sound.c	20;"	variable
+duty	..\..\sound.c	17;"	variable
 enableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2715;"	macro
 enableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2724;"	macro
 enableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2734;"	macro
 flagCFG1	..\..\main.c	29;"	variable
 flagCFG2	..\..\main.c	30;"	variable
 flagCFG3	..\..\main.c	31;"	variable
-freq	..\..\sound.c	25;"	variable
-generalLee_song	..\..\sound.c	45;"	variable
+freq	..\..\sound.c	22;"	variable
+generalLee_song	..\..\sound.c	41;"	variable
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2722;"	macro
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2731;"	macro
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2741;"	macro
@@ -3239,12 +3238,14 @@ interrupt_vector	stm8_interrupt_vector.c	9;"	struct	file:
 j	..\..\utils.c	42;"	variable
 main	..\..\main.c	46;"	function	signature:(void)
 mainFsm	..\..\main.c	34;"	variable
-n	..\..\sound.c	28;"	variable
+monofrequenza	..\..\sound.c	147;"	function	signature:( uint32_t f1)
+monofrequenza	..\..\sound.h	58;"	prototype	signature:( uint32_t f1)
+n	..\..\sound.c	25;"	variable
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2719;"	macro
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2728;"	macro
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2738;"	macro
-pause	..\..\sound.c	182;"	function	signature:(void)
-pause	..\..\sound.h	60;"	prototype	signature:(void)
+pausa	..\..\sound.c	153;"	function	signature:(void)
+pausa	..\..\sound.h	59;"	prototype	signature:(void)
 readADC1	..\..\init.c	160;"	function	signature:(uint16_t channel)
 readADC1	..\..\init.h	44;"	prototype	signature:(uint16_t channel)
 rim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2717;"	macro
@@ -3255,25 +3256,22 @@ s32	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	221;"	typedef
 s8	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	223;"	typedef
 setAlternateBit	..\..\init.c	141;"	function	signature:(void)
 setAlternateBit	..\..\init.h	42;"	prototype	signature:(void)
-setFrequency	..\..\sound.c	176;"	function	signature:( uint32_t f1)
-setFrequency	..\..\sound.h	59;"	prototype	signature:( uint32_t f1)
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2718;"	macro
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2727;"	macro
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2737;"	macro
-song	..\..\sound.c	150;"	function	signature:(uint16_t note[])
-songStep	..\..\sound.c	30;"	variable
-soundStone	..\..\sound.c	47;"	function	signature:(uint8_t num)
-soundStone	..\..\sound.h	58;"	prototype	signature:(uint8_t num)
-sweep	..\..\sound.c	26;"	variable
-sweep1k2_500	..\..\sound.h	68;"	prototype	signature:(void)
-sweep1k_2k	..\..\sound.h	66;"	prototype	signature:(void)
-sweep2k8_2k	..\..\sound.h	67;"	prototype	signature:(void)
-sweep2k_2k8	..\..\sound.h	62;"	prototype	signature:(void)
-sweep2k_2k8_reverse	..\..\sound.h	63;"	prototype	signature:(void)
-sweep500_1k2	..\..\sound.h	61;"	prototype	signature:(void)
-sweep500_1k5_2k7	..\..\sound.h	64;"	prototype	signature:(void)
-sweepCnt	..\..\sound.c	23;"	variable
-t	..\..\sound.c	29;"	variable
+songStep	..\..\sound.c	27;"	variable
+soundStone	..\..\sound.c	43;"	function	signature:(uint8_t num)
+soundStone	..\..\sound.h	57;"	prototype	signature:(uint8_t num)
+sweep	..\..\sound.c	23;"	variable
+sweep1k2_500	..\..\sound.h	67;"	prototype	signature:(void)
+sweep1k_2k	..\..\sound.h	65;"	prototype	signature:(void)
+sweep2k8_2k	..\..\sound.h	66;"	prototype	signature:(void)
+sweep2k_2k8	..\..\sound.h	61;"	prototype	signature:(void)
+sweep2k_2k8_reverse	..\..\sound.h	62;"	prototype	signature:(void)
+sweep500_1k2	..\..\sound.h	60;"	prototype	signature:(void)
+sweep500_1k5_2k7	..\..\sound.h	63;"	prototype	signature:(void)
+sweepCnt	..\..\sound.c	20;"	variable
+t	..\..\sound.c	26;"	variable
 timeout10ms	..\..\utils.c	20;"	variable
 timeout10msISR	..\..\utils.c	24;"	variable
 timeout1ms	..\..\utils.c	19;"	variable

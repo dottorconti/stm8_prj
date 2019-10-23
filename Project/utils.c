@@ -1,10 +1,12 @@
-//***********************UTILS*********************/
-//	File: utils.c
-//  Author: Contiero Enrico
-//	email: enrico.contiero29@gmail.com
-//	Date: 24/10/19
-//	Revision: 1.0
-//****************************************************/
+/**
+  * @brief  Imposto Frequenza e Duty cycle su TIM1
+  * @param  canale del timer, duty cicle desiderato ,la frequenza desiderata
+  * This parameter is between 0x0000 and 0xFFFF.
+  * @retval None
+  */
+	
+/***********************UTILS********************/
+/************************************************/
 
 #include "stm8s.h"
 #include "stm8s_gpio.h"

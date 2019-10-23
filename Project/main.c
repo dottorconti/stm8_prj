@@ -1,10 +1,21 @@
-//***********************MAIN*********************/
-//	File: main.c
-//  Author: Contiero Enrico
-//	email: enrico.contiero29@gmail.com
-//	Date: 24/10/19
-//	Revision: 1.0
-//*************************************************/
+/* ------------------------------------------------------------------
+File:     EOS S
+
+Elenco Funzioni: 
+Seleziona il Colore con SW2 ( rosso, verde, blu, ambra, bianco, magenta, giallo, ciano) e memorizzo sul canale scelto.
+Selezioni intensità del colore premendo SW2 per 1s e memorizzo sul canale scelto.
+Seleziona la tipologia di lampeggio con SW1 (monolampo, triplolampo, cinque lampi, random,fisso) e memorizzo sul canale scelto.
+Resetto tutte le impostazioni sui canali premendo lo SW1 per 5s
+
+Note: 
+1) 
+
+Data:     03/08/2018
+Rev:      Rev7_23
+Autore:   Patrizia Perrucci
+e-mail:   xxx@xxx.xxx
+Tel:      (+39)011
+------------------------------------------------------------------ */
 
 #include "stm8s.h"
 #include "stm8s_gpio.h"

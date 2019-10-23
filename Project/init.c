@@ -6,13 +6,8 @@
 #include "init.h"
 #include "utils.h"
 
-//***********************INIT*********************/
-//	File: init.c
-//  Author: Contiero Enrico
-//	email: enrico.contiero29@gmail.com
-//	Date: 24/10/19
-//	Revision: 1.0
-//*************************************************/
+/***********************INIT*********************/
+/************************************************/
 
 void clock_setup(void) 
 {
