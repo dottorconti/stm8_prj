@@ -1,12 +1,10 @@
-/**
-  * @brief  Imposto Frequenza e Duty cycle su TIM1
-  * @param  canale del timer, duty cicle desiderato ,la frequenza desiderata
-  * This parameter is between 0x0000 and 0xFFFF.
-  * @retval None
-  */
-	
-/***********************UTILS********************/
-/************************************************/
+//***********************UTILS*********************/
+//	File: utils.c
+//	Revision: 1.0
+//	Date: 24/10/19
+//	Author: Contiero Enrico
+//	email: enrico.store@gmail.com
+//*************************************************/
 
 #include "stm8s.h"
 #include "stm8s_gpio.h"

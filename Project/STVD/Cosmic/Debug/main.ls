@@ -23,68 +23,68 @@
   40  000c 0000          	dc.w	0
   41  000e               _RAW_Data:
   42  000e 0000          	dc.w	0
-  84                     ; 46 void main(void)
-  84                     ; 47 {
+  84                     ; 36 void main(void)
+  84                     ; 37 {
   86                     .text:	section	.text,new
   87  0000               _main:
-  91                     ; 48 	init_setup();
+  91                     ; 38 	init_setup();
   93  0000 cd0000        	call	_init_setup
   95  0003               L52:
-  96                     ; 51 		if (timeout500ms)
-  98                     ; 56 		if (timeout50ms)
+  96                     ; 41 		if (timeout500ms)
+  98                     ; 46 		if (timeout50ms)
  100  0003 be00          	ldw	x,_timeout50ms
  101  0005 2703          	jreq	L33
- 102                     ; 58 			inputRead();
+ 102                     ; 48 			inputRead();
  104  0007 cd0000        	call	_inputRead
  106  000a               L33:
- 107                     ; 62 		if (timeout10ms)
+ 107                     ; 52 		if (timeout10ms)
  109  000a be00          	ldw	x,_timeout10ms
  110  000c 2735          	jreq	L53
- 111                     ; 65 			switch (mainFsm)
+ 111                     ; 55 			switch (mainFsm)
  113  000e b608          	ld	a,_mainFsm
- 115                     ; 87 				break;
+ 115                     ; 77 				break;
  116  0010 4a            	dec	a
  117  0011 2706          	jreq	L3
  118  0013 a004          	sub	a,#4
  119  0015 2724          	jreq	L5
  120  0017 202a          	jra	L53
  121  0019               L3:
- 122                     ; 67 				case SELCFG: 			//SELEZIONA CONFIGURAZIONE
- 122                     ; 68 				if ((S1_IN==0) && (S2_IN==0))
+ 122                     ; 57 				case SELCFG: 			//SELEZIONA CONFIGURAZIONE
+ 122                     ; 58 				if ((S1_IN==0) && (S2_IN==0))
  124  0019 3d00          	tnz	_S1_IN
  125  001b 260b          	jrne	L34
  127  001d 3d00          	tnz	_S2_IN
  128  001f 2607          	jrne	L34
- 129                     ; 70 					S1_enable 	= 0;
+ 129                     ; 60 					S1_enable 	= 0;
  131  0021 b709          	ld	_S1_enable,a
- 132                     ; 71 					S2_enable 	= 0;
+ 132                     ; 61 					S2_enable 	= 0;
  134  0023 b70a          	ld	_S2_enable,a
- 135                     ; 72 					caseCnt 		= 0;
+ 135                     ; 62 					caseCnt 		= 0;
  137  0025 5f            	clrw	x
  138  0026 bf00          	ldw	_caseCnt,x
  139  0028               L34:
- 140                     ; 75 				if ((S1_IN==1) && (S2_IN==0))
+ 140                     ; 65 				if ((S1_IN==1) && (S2_IN==0))
  142  0028 b600          	ld	a,_S1_IN
  143  002a 4a            	dec	a
  144  002b 2608          	jrne	L54
  146  002d b600          	ld	a,_S2_IN
  147  002f 2604          	jrne	L54
- 148                     ; 77 					duty = 50; 
+ 148                     ; 67 					duty = 50; 
  150  0031 35320000      	mov	_duty,#50
  151  0035               L54:
- 152                     ; 79 				mainFsm=RUN;
+ 152                     ; 69 				mainFsm=RUN;
  154  0035 35050008      	mov	_mainFsm,#5
- 155                     ; 80 				break;
+ 155                     ; 70 				break;
  157  0039 2008          	jra	L53
  158  003b               L5:
- 159                     ; 82 				case RUN:
- 159                     ; 83 				if(timeout10ms)
+ 159                     ; 72 				case RUN:
+ 159                     ; 73 				if(timeout10ms)
  161  003b be00          	ldw	x,_timeout10ms
  162  003d 2704          	jreq	L53
- 163                     ; 85 					mainFsm=SELCFG;
+ 163                     ; 75 					mainFsm=SELCFG;
  165  003f 35010008      	mov	_mainFsm,#1
  166  0043               L53:
- 167                     ; 90 		UpdateTask();			
+ 167                     ; 80 		UpdateTask();			
  169  0043 cd0000        	call	_UpdateTask
  172  0046 20bb          	jra	L52
  300                     	xdef	_main

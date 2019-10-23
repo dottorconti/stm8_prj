@@ -1,3 +1,11 @@
+//***********************INIT*********************/
+//	File: init.c
+//	Revision: 1.0
+//	Date: 24/10/19
+//	Author: Contiero Enrico
+//	email: enrico.store@gmail.com
+//*************************************************/
+
 #include "stm8s.h"
 #include "stm8s_gpio.h"
 #include "stm8s_adc1.h"
@@ -5,9 +13,6 @@
 #include "stm8s_it.h"
 #include "init.h"
 #include "utils.h"
-
-/***********************INIT*********************/
-/************************************************/
 
 void clock_setup(void) 
 {

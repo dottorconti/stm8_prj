@@ -1,3 +1,10 @@
+//***********************SOUND*********************/
+//	File: sound.c
+//	Revision: 1.0
+//	Date: 24/10/19
+//	Author: Contiero Enrico
+//	email: enrico.store@gmail.com
+//*************************************************/
 
 #include "stm8s.h"
 #include "stm8s_gpio.h"
@@ -7,12 +14,6 @@
 #include "init.h"
 #include "utils.h"
 #include "sound.h"
-
-//***********************SOUND*********************/
-//	Rev 1.0
-//*************************************************/
-	
-/*Valori già convertiti con Fmaster 16Mhz*/
 
 uint8_t 	duty				=	40;
 
