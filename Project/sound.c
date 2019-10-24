@@ -20,6 +20,7 @@ uint16_t 	cnt 				= 0;
 uint8_t 	n 					= 0;
 uint8_t 	t 					= 1;
 bool 			songStep 		= 0;
+uint8_t ii=0;
 
 uint16_t BPM = 0;
 uint16_t  QQ = 0;
@@ -55,14 +56,20 @@ uint16_t birthday_song[53] = {RE4,UQ,RE4,UQ,MI4,UQ,RE4,UQ,SOL4,UQ,FAd4,UQ,
 */
 
 //uint16_t generalLee_song[27] = {SOL4,UQ,MI4,UQ,DO4,DQ,DO4,DQ,DO4,UQ,RE4,UQ,MI4,UQ,FA4,UQ,SOL4,DQ,SOL4,DQ,SOL4,DQ,MI4,DQ,MUTE,200,END};
-
+/*
 uint16_t birthday_song[53] = {RE4,50,RE4,50,MI4,50,RE4,50,SOL4,50,FAd4,50,
 															RE4,50,RE4,50,MI4,50,RE4,50,LA4,50,SOL4,50,	
 															RE4,50,RE4,50,RE4/2,50,SI4,50,SOL4,50,FAd4,50,MI4,50, 
 															DO4/2,50, DO4/2,50,SI4,50,SOL4,50,LA4,50,SOL4,50,MUTE,200,END};
-															
+	*/														
 uint16_t generalLee_song[27] = {SOL4,19,MI4,19,DO4,38,DO4,38,DO4,19,RE4,19,MI4,19,FA4,19,SOL4,38,SOL4,38,SOL4,38,MI4,38,MUTE,200,END};
 
+uint16_t vintage_song[23] = 
+{
+1929,3616,2379,3197,3016,3965,6107,4598,
+2202,4348,1973,3062,2171,2610,2914,4097,
+1898,2317,4227,3320,4494,2142,2390
+};
 
 void soundStone(uint8_t num)
 {
@@ -76,11 +83,6 @@ void soundStone(uint8_t num)
 	{
 /*****SW1*****/	
 		case 0:
-			if (firstTime)
-			{
-				//changeBPM(320);
-				firstTime=0;
-			}
 			hornGeneralLee();
 		break;
 		
@@ -92,12 +94,8 @@ void soundStone(uint8_t num)
 
 /*****SW2*****/
 		case 8:
-			if (firstTime)
-			{
-				//changeBPM(120);
-				firstTime=0;
-			}		
-			birtdaySong();
+		//	birtdaySong();
+		vintageHorn();
 		break;
 
 		case 12:
@@ -113,7 +111,7 @@ void soundStone(uint8_t num)
 }
 
 //************Function definitions******************
-
+/*
 void birtdaySong(void)
 {
 	switch (songStep)
@@ -145,6 +143,13 @@ void birtdaySong(void)
 		songStep = 0;
 		break;
 	}
+}
+*/
+void vintageHorn(void)
+{
+	TIM1_SetAutoreload(13008);
+	TIM1_SetCompare4(130008/duty);
+
 }
 
 void hornGeneralLee(void)

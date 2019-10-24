@@ -82,5 +82,6 @@ void song(uint16_t note[]);
 
 void birtdaySong(void);
 void hornGeneralLee(void);
-void changeBPM(uint16_t bpmVar);
+void vintageHorn(void);
+
 #endif

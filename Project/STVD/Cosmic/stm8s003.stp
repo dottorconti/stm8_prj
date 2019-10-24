@@ -61,7 +61,7 @@ String.100.2=STM8 Cosmic
 String.100.3=ST7 Metrowerks V1.1
 String.100.4=Raisonance
 String.101.0=STM8 Cosmic
-String.102.0=C:\Program Files (x86)\COSMIC\CXSTM8_EVAL
+String.102.0=
 String.103.0=
 String.104.0=Hstm8
 String.105.0=Lib
@@ -83,10 +83,10 @@ String.100.0=STM8S003F3P
 
 [Root.Config.0.Settings.3]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 +modsl0 -customOpt -no +compact +split -pne -customC-pp -customLst -l -dSTM8S001 -i..\..\..\libraries\stm8s_stdperiph_driver\inc -i..\.. -i..\..\..\stm8s_stdperiph_template -i..\..\..\..\libraries\stm8s_stdperiph_driver\inc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
+String.3.0=cxstm8 +modsl0 -customDebCompat -customOpt -no +split -pne -customC-pp -customLst -l -dSTM8S001 -i..\..\..\libraries\stm8s_stdperiph_driver\inc -i..\.. -i..\..\..\stm8s_stdperiph_template -i..\..\..\..\libraries\stm8s_stdperiph_driver\inc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
-String.6.0=2019,10,24,2,15,52
+String.6.0=2019,10,24,8,37,57
 
 [Root.Config.0.Settings.4]
 String.2.0=Assembling $(InputFile)...
@@ -145,7 +145,7 @@ String.100.3=STM8 Cosmic
 String.100.4=ST7 Metrowerks V1.1
 String.100.5=Raisonance
 String.101.0=STM8 Cosmic
-String.102.0=C:\Program Files (x86)\COSMIC\CXSTM8_EVAL
+String.102.0=
 String.103.0=
 String.104.0=Hstm8
 String.105.0=Lib
@@ -244,10 +244,10 @@ Int.1=0
 
 [Root.Source Files.Config.0.Settings.1]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 +modsl0 -customOpt -no +split -pne -customC-pp -customLst -l -dSTM8S001 -i..\..\..\libraries\stm8s_stdperiph_driver\inc -i..\.. -i..\..\..\stm8s_stdperiph_template -i..\..\..\..\libraries\stm8s_stdperiph_driver\inc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
+String.3.0=cxstm8 +modsl0 -customDebCompat -customOpt -no +split -pne -customC-pp -customLst -l -dSTM8S001 -i..\..\..\libraries\stm8s_stdperiph_driver\inc -i..\.. -i..\..\..\stm8s_stdperiph_template -i..\..\..\..\libraries\stm8s_stdperiph_driver\inc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
-String.6.0=2019,10,24,2,15,52
+String.6.0=2019,10,24,8,37,57
 
 [Root.Source Files.Config.0.Settings.2]
 String.2.0=Assembling $(InputFile)...
@@ -371,10 +371,10 @@ Int.1=0
 
 [Root.StdPeriph_Drivers.Config.0.Settings.1]
 String.2.0=Compiling $(InputFile)...
-String.3.0=cxstm8 +modsl0 -customOpt -no +split -pne -customC-pp -customLst -l -dSTM8S001 -i..\..\..\libraries\stm8s_stdperiph_driver\inc -i..\.. -i..\..\..\stm8s_stdperiph_template -i..\..\..\..\libraries\stm8s_stdperiph_driver\inc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
+String.3.0=cxstm8 +modsl0 -customDebCompat -customOpt -no +split -pne -customC-pp -customLst -l -dSTM8S001 -i..\..\..\libraries\stm8s_stdperiph_driver\inc -i..\.. -i..\..\..\stm8s_stdperiph_template -i..\..\..\..\libraries\stm8s_stdperiph_driver\inc $(ToolsetIncOpts) -cl$(IntermPath) -co$(IntermPath) $(InputFile)
 String.4.0=$(IntermPath)$(InputName).$(ObjectExt)
 String.5.0=$(IntermPath)$(InputName).ls
-String.6.0=2019,10,24,2,15,52
+String.6.0=2019,10,24,8,37,57
 
 [Root.StdPeriph_Drivers.Config.0.Settings.2]
 String.2.0=Assembling $(InputFile)...
