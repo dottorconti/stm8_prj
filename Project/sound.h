@@ -63,7 +63,7 @@
 
 extern uint8_t 		duty;
 extern uint16_t 	caseCnt;
-
+extern bool pressedHazzardFlag;
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */	
 

@@ -57,14 +57,23 @@ void main(void)
 				case SELCFG:
 				if ((S1_IN==1) && (S2_IN==1))
 				{
-					S1_enable 	= 0;
-					S2_enable 	= 0;
+					if (pressedHazzardFlag)
+					{
+						S1_enable 	= 1;
+						S2_enable 	= 0;
+					}
+					else
+					{
+						S1_enable 	= 0;
+						S2_enable 	= 0;					
+					}
 				}
 				
 				if ((S1_IN==0) && (S2_IN==1))
 				{ 
 					S1_enable 	= 1;
 					S2_enable 	= 0;
+					pressedHazzardFlag = 1;
 					SndDip = dipRead(0);
 				}
 				

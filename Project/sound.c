@@ -29,6 +29,7 @@ uint16_t  UQ = 0;
 uint16_t  UO = 0;
 uint8_t oldNum = 0;
 bool firstTime = 1;
+bool pressedHazzardFlag = 0;
 
 //uint16_t scale_song[15] = {DO4, 100, RE4, 100, MI4, 100, FA4, 100, SOL4, 100, LA4, 100, SI4, 100, END};
 
@@ -63,13 +64,6 @@ uint16_t birthday_song[53] = {RE4,50,RE4,50,MI4,50,RE4,50,SOL4,50,FAd4,50,
 															DO4/2,50, DO4/2,50,SI4,50,SOL4,50,LA4,50,SOL4,50,MUTE,200,END};
 	*/														
 uint16_t generalLee_song[27] = {SOL4,18,MI4,18,DO4,37,DO4,37,DO4,18,RE4,18,MI4,18,FA4,18,SOL4,37,SOL4,37,SOL4,37,MI4,37,MUTE,200,END};
-
-uint16_t vintage_song[23] = 
-{
-1929,3616,2379,3197,3016,3965,6107,4598,
-2202,4348,1973,3062,2171,2610,2914,4097,
-1898,2317,4227,3320,4494,2142,2390
-};
 
 void soundStone(uint8_t num)
 {
@@ -149,7 +143,6 @@ void vintageHorn(void)
 {
 	TIM1_SetAutoreload(13008);
 	TIM1_SetCompare4(130008/duty);
-
 }
 
 void hornGeneralLee(void)
@@ -174,6 +167,7 @@ void hornGeneralLee(void)
 		{
 			n = 0;
 			t = 1;
+			pressedHazzardFlag = 0;
 		}
 		
 		break;

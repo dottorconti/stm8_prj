@@ -14,134 +14,147 @@
   28  0004 01            	dc.b	1
   29  0005               _debugCnt:
   30  0005 0000          	dc.w	0
-  75                     ; 28 void main(void)
-  75                     ; 29 {
-  77                     .text:	section	.text,new
-  78  0000               _main:
-  82                     ; 30 	init_setup();
-  84  0000 cd0000        	call	_init_setup
-  86  0003               L13:
-  87                     ; 33 		if (timeout500ms)
-  89  0003 ce0000        	ldw	x,_timeout500ms
-  90  0006 271b          	jreq	L53
-  91                     ; 35 			switch (channel)
-  93  0008 c60001        	ld	a,_channel
-  95                     ; 43 				break;			
-  96  000b a003          	sub	a,#3
-  97  000d 2705          	jreq	L3
-  98  000f 4a            	dec	a
-  99  0010 2709          	jreq	L5
- 100  0012 200c          	jra	L14
- 101  0014               L3:
- 102                     ; 37 				case AIN3:
- 102                     ; 38 				ADC_setup(ADC1_CHANNEL_3);
- 104  0014 a603          	ld	a,#3
- 105  0016 cd0000        	call	_ADC_setup
- 107                     ; 39 				break;
- 109  0019 2005          	jra	L14
- 110  001b               L5:
- 111                     ; 41 				case AIN4:
- 111                     ; 42 				ADC_setup(ADC1_CHANNEL_4);
- 113  001b a604          	ld	a,#4
- 114  001d cd0000        	call	_ADC_setup
- 116                     ; 43 				break;			
- 118  0020               L14:
- 119                     ; 45 			ADC1_StartConversion();		
- 121  0020 cd0000        	call	_ADC1_StartConversion
- 123  0023               L53:
- 124                     ; 48 		if (timeout50ms)
- 126  0023 ce0000        	ldw	x,_timeout50ms
- 127  0026 2703          	jreq	L34
- 128                     ; 50 			inputRead();
- 130  0028 cd0000        	call	_inputRead
- 132  002b               L34:
- 133                     ; 53 		if (timeout10ms)
- 135  002b ce0000        	ldw	x,_timeout10ms
- 136  002e 276b          	jreq	L54
- 137                     ; 55 			switch (mainFsm)
- 139  0030 c60000        	ld	a,_mainFsm
- 141                     ; 86 				break;
- 142  0033 4a            	dec	a
- 143  0034 2705          	jreq	L7
- 144  0036 4a            	dec	a
- 145  0037 2759          	jreq	L11
- 146  0039 2060          	jra	L54
- 147  003b               L7:
- 148                     ; 57 				case SELCFG:
- 148                     ; 58 				if ((S1_IN==1) && (S2_IN==1))
- 150  003b ce0000        	ldw	x,_S1_IN
- 151  003e a30001        	cpw	x,#1
- 152  0041 2610          	jrne	L35
- 154  0043 ce0000        	ldw	x,_S2_IN
- 155  0046 a30001        	cpw	x,#1
- 156  0049 2608          	jrne	L35
- 157                     ; 60 					S1_enable 	= 0;
- 159  004b 725f0002      	clr	_S1_enable
- 160                     ; 61 					S2_enable 	= 0;
- 162  004f 725f0003      	clr	_S2_enable
- 163  0053               L35:
- 164                     ; 64 				if ((S1_IN==0) && (S2_IN==1))
- 166  0053 ce0000        	ldw	x,_S1_IN
- 167  0056 2617          	jrne	L55
- 169  0058 ce0000        	ldw	x,_S2_IN
- 170  005b a30001        	cpw	x,#1
- 171  005e 260f          	jrne	L55
- 172                     ; 66 					S1_enable 	= 1;
- 174  0060 35010002      	mov	_S1_enable,#1
- 175                     ; 67 					S2_enable 	= 0;
- 177  0064 725f0003      	clr	_S2_enable
- 178                     ; 68 					SndDip = dipRead(0);
- 180  0068 4f            	clr	a
- 181  0069 cd0000        	call	_dipRead
- 183  006c c70004        	ld	_SndDip,a
- 184  006f               L55:
- 185                     ; 71 				if ((S1_IN==1) && (S2_IN==0))
- 187  006f ce0000        	ldw	x,_S1_IN
- 188  0072 a30001        	cpw	x,#1
- 189  0075 2615          	jrne	L75
- 191  0077 ce0000        	ldw	x,_S2_IN
- 192  007a 2610          	jrne	L75
- 193                     ; 73 					S1_enable 	= 0;
- 195  007c 725f0002      	clr	_S1_enable
- 196                     ; 74 					S2_enable 	= 1;
- 198  0080 35010003      	mov	_S2_enable,#1
- 199                     ; 75 					SndDip = dipRead(1);
- 201  0084 a601          	ld	a,#1
- 202  0086 cd0000        	call	_dipRead
- 204  0089 c70004        	ld	_SndDip,a
- 205  008c               L75:
- 206                     ; 78 				mainFsm=RUN;
- 208  008c 35020000      	mov	_mainFsm,#2
- 209                     ; 79 				break;
- 211  0090 2009          	jra	L54
- 212  0092               L11:
- 213                     ; 81 				case RUN:
- 213                     ; 82 				if(timeout10ms)
- 215  0092 ce0000        	ldw	x,_timeout10ms
- 216  0095 2704          	jreq	L54
- 217                     ; 84 					mainFsm=SELCFG;
- 219  0097 35010000      	mov	_mainFsm,#1
- 220  009b               L15:
- 221  009b               L54:
- 222                     ; 89 		UpdateTask();			
- 224  009b cd0000        	call	_UpdateTask
- 227  009e ac030003      	jpf	L13
- 284                     	xdef	_main
- 285                     	xdef	_debugCnt
- 286                     	xref	_ADC_setup
- 287                     	xref	_dipRead
- 288                     	xref	_init_setup
- 289                     	xref	_UpdateTask
- 290                     	xref	_inputRead
- 291                     	xref	_S2_IN
- 292                     	xref	_S1_IN
- 293                     	xref	_timeout500ms
- 294                     	xref	_timeout50ms
- 295                     	xref	_timeout10ms
- 296                     	xdef	_SndDip
- 297                     	xdef	_S2_enable
- 298                     	xdef	_S1_enable
- 299                     	xdef	_channel
- 300                     	xdef	_mainFsm
- 301                     	xref	_ADC1_StartConversion
- 320                     	end
+  76                     ; 28 void main(void)
+  76                     ; 29 {
+  78                     .text:	section	.text,new
+  79  0000               _main:
+  83                     ; 30 	init_setup();
+  85  0000 cd0000        	call	_init_setup
+  87  0003               L13:
+  88                     ; 33 		if (timeout500ms)
+  90  0003 ce0000        	ldw	x,_timeout500ms
+  91  0006 271b          	jreq	L53
+  92                     ; 35 			switch (channel)
+  94  0008 c60001        	ld	a,_channel
+  96                     ; 43 				break;			
+  97  000b a003          	sub	a,#3
+  98  000d 2705          	jreq	L3
+  99  000f 4a            	dec	a
+ 100  0010 2709          	jreq	L5
+ 101  0012 200c          	jra	L14
+ 102  0014               L3:
+ 103                     ; 37 				case AIN3:
+ 103                     ; 38 				ADC_setup(ADC1_CHANNEL_3);
+ 105  0014 a603          	ld	a,#3
+ 106  0016 cd0000        	call	_ADC_setup
+ 108                     ; 39 				break;
+ 110  0019 2005          	jra	L14
+ 111  001b               L5:
+ 112                     ; 41 				case AIN4:
+ 112                     ; 42 				ADC_setup(ADC1_CHANNEL_4);
+ 114  001b a604          	ld	a,#4
+ 115  001d cd0000        	call	_ADC_setup
+ 117                     ; 43 				break;			
+ 119  0020               L14:
+ 120                     ; 45 			ADC1_StartConversion();		
+ 122  0020 cd0000        	call	_ADC1_StartConversion
+ 124  0023               L53:
+ 125                     ; 48 		if (timeout50ms)
+ 127  0023 ce0000        	ldw	x,_timeout50ms
+ 128  0026 2703          	jreq	L34
+ 129                     ; 50 			inputRead();
+ 131  0028 cd0000        	call	_inputRead
+ 133  002b               L34:
+ 134                     ; 53 		if (timeout10ms)
+ 136  002b ce0000        	ldw	x,_timeout10ms
+ 137  002e 2603cc00b3    	jreq	L54
+ 138                     ; 55 			switch (mainFsm)
+ 140  0033 c60000        	ld	a,_mainFsm
+ 142                     ; 95 				break;
+ 143  0036 4a            	dec	a
+ 144  0037 2705          	jreq	L7
+ 145  0039 4a            	dec	a
+ 146  003a 276e          	jreq	L11
+ 147  003c 2075          	jra	L54
+ 148  003e               L7:
+ 149                     ; 57 				case SELCFG:
+ 149                     ; 58 				if ((S1_IN==1) && (S2_IN==1))
+ 151  003e ce0000        	ldw	x,_S1_IN
+ 152  0041 a30001        	cpw	x,#1
+ 153  0044 261f          	jrne	L35
+ 155  0046 ce0000        	ldw	x,_S2_IN
+ 156  0049 a30001        	cpw	x,#1
+ 157  004c 2617          	jrne	L35
+ 158                     ; 60 					if (pressedHazzardFlag)
+ 160  004e ce0000        	ldw	x,_pressedHazzardFlag
+ 161  0051 270a          	jreq	L55
+ 162                     ; 62 						S1_enable 	= 1;
+ 164  0053 35010002      	mov	_S1_enable,#1
+ 165                     ; 63 						S2_enable 	= 0;
+ 167  0057 725f0003      	clr	_S2_enable
+ 169  005b 2008          	jra	L35
+ 170  005d               L55:
+ 171                     ; 67 						S1_enable 	= 0;
+ 173  005d 725f0002      	clr	_S1_enable
+ 174                     ; 68 						S2_enable 	= 0;					
+ 176  0061 725f0003      	clr	_S2_enable
+ 177  0065               L35:
+ 178                     ; 72 				if ((S1_IN==0) && (S2_IN==1))
+ 180  0065 ce0000        	ldw	x,_S1_IN
+ 181  0068 261d          	jrne	L16
+ 183  006a ce0000        	ldw	x,_S2_IN
+ 184  006d a30001        	cpw	x,#1
+ 185  0070 2615          	jrne	L16
+ 186                     ; 74 					S1_enable 	= 1;
+ 188  0072 35010002      	mov	_S1_enable,#1
+ 189                     ; 75 					S2_enable 	= 0;
+ 191  0076 725f0003      	clr	_S2_enable
+ 192                     ; 76 					pressedHazzardFlag = 1;
+ 194  007a ae0001        	ldw	x,#1
+ 195  007d cf0000        	ldw	_pressedHazzardFlag,x
+ 196                     ; 77 					SndDip = dipRead(0);
+ 198  0080 4f            	clr	a
+ 199  0081 cd0000        	call	_dipRead
+ 201  0084 c70004        	ld	_SndDip,a
+ 202  0087               L16:
+ 203                     ; 80 				if ((S1_IN==1) && (S2_IN==0))
+ 205  0087 ce0000        	ldw	x,_S1_IN
+ 206  008a a30001        	cpw	x,#1
+ 207  008d 2615          	jrne	L36
+ 209  008f ce0000        	ldw	x,_S2_IN
+ 210  0092 2610          	jrne	L36
+ 211                     ; 82 					S1_enable 	= 0;
+ 213  0094 725f0002      	clr	_S1_enable
+ 214                     ; 83 					S2_enable 	= 1;
+ 216  0098 35010003      	mov	_S2_enable,#1
+ 217                     ; 84 					SndDip = dipRead(1);
+ 219  009c a601          	ld	a,#1
+ 220  009e cd0000        	call	_dipRead
+ 222  00a1 c70004        	ld	_SndDip,a
+ 223  00a4               L36:
+ 224                     ; 87 				mainFsm=RUN;
+ 226  00a4 35020000      	mov	_mainFsm,#2
+ 227                     ; 88 				break;
+ 229  00a8 2009          	jra	L54
+ 230  00aa               L11:
+ 231                     ; 90 				case RUN:
+ 231                     ; 91 				if(timeout10ms)
+ 233  00aa ce0000        	ldw	x,_timeout10ms
+ 234  00ad 2704          	jreq	L54
+ 235                     ; 93 					mainFsm=SELCFG;
+ 237  00af 35010000      	mov	_mainFsm,#1
+ 238  00b3               L15:
+ 239  00b3               L54:
+ 240                     ; 98 		UpdateTask();			
+ 242  00b3 cd0000        	call	_UpdateTask
+ 245  00b6 ac030003      	jpf	L13
+ 302                     	xdef	_main
+ 303                     	xdef	_debugCnt
+ 304                     	xref	_pressedHazzardFlag
+ 305                     	xref	_ADC_setup
+ 306                     	xref	_dipRead
+ 307                     	xref	_init_setup
+ 308                     	xref	_UpdateTask
+ 309                     	xref	_inputRead
+ 310                     	xref	_S2_IN
+ 311                     	xref	_S1_IN
+ 312                     	xref	_timeout500ms
+ 313                     	xref	_timeout50ms
+ 314                     	xref	_timeout10ms
+ 315                     	xdef	_SndDip
+ 316                     	xdef	_S2_enable
+ 317                     	xdef	_S1_enable
+ 318                     	xdef	_channel
+ 319                     	xdef	_mainFsm
+ 320                     	xref	_ADC1_StartConversion
+ 339                     	end
