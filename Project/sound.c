@@ -15,7 +15,7 @@
 #include "utils.h"
 #include "sound.h"
 
-uint8_t 	duty				=	20;
+uint8_t 	duty				=	15;
 uint16_t 	cnt 				= 0;
 uint8_t 	n 					= 0;
 uint8_t 	t 					= 1;
