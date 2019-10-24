@@ -1,111 +1,120 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.10.2 - 02 Nov 2011
    3                     ; Generator (Limited) V4.3.7 - 29 Nov 2011
-   4                     ; Optimizer V4.3.6 - 29 Nov 2011
-  22                     	bsct
-  23  0000               _flagCFG1:
-  24  0000 0000          	dc.w	0
-  25  0002               _flagCFG2:
-  26  0002 0000          	dc.w	0
-  27  0004               _flagCFG3:
-  28  0004 0000          	dc.w	0
-  29  0006               _cntCheck:
-  30  0006 0000          	dc.w	0
-  31  0008               _mainFsm:
-  32  0008 01            	dc.b	1
-  33  0009               _S1_enable:
-  34  0009 00            	dc.b	0
-  35  000a               _S2_enable:
-  36  000a 00            	dc.b	0
-  37  000b               _SndDip:
-  38  000b 01            	dc.b	1
-  39  000c               _debugCnt:
-  40  000c 0000          	dc.w	0
-  41  000e               _RAW_Data:
-  42  000e 0000          	dc.w	0
-  84                     ; 36 void main(void)
-  84                     ; 37 {
-  86                     .text:	section	.text,new
-  87  0000               _main:
-  91                     ; 38 	init_setup();
-  93  0000 cd0000        	call	_init_setup
-  95  0003               L52:
-  96                     ; 41 		if (timeout500ms)
-  98                     ; 46 		if (timeout50ms)
- 100  0003 be00          	ldw	x,_timeout50ms
- 101  0005 2703          	jreq	L33
- 102                     ; 48 			inputRead();
- 104  0007 cd0000        	call	_inputRead
- 106  000a               L33:
- 107                     ; 52 		if (timeout10ms)
- 109  000a be00          	ldw	x,_timeout10ms
- 110  000c 2735          	jreq	L53
- 111                     ; 55 			switch (mainFsm)
- 113  000e b608          	ld	a,_mainFsm
- 115                     ; 77 				break;
- 116  0010 4a            	dec	a
- 117  0011 2706          	jreq	L3
- 118  0013 a004          	sub	a,#4
- 119  0015 2724          	jreq	L5
- 120  0017 202a          	jra	L53
- 121  0019               L3:
- 122                     ; 57 				case SELCFG: 			//SELEZIONA CONFIGURAZIONE
- 122                     ; 58 				if ((S1_IN==0) && (S2_IN==0))
- 124  0019 3d00          	tnz	_S1_IN
- 125  001b 260b          	jrne	L34
- 127  001d 3d00          	tnz	_S2_IN
- 128  001f 2607          	jrne	L34
- 129                     ; 60 					S1_enable 	= 0;
- 131  0021 b709          	ld	_S1_enable,a
- 132                     ; 61 					S2_enable 	= 0;
- 134  0023 b70a          	ld	_S2_enable,a
- 135                     ; 62 					caseCnt 		= 0;
- 137  0025 5f            	clrw	x
- 138  0026 bf00          	ldw	_caseCnt,x
- 139  0028               L34:
- 140                     ; 65 				if ((S1_IN==1) && (S2_IN==0))
- 142  0028 b600          	ld	a,_S1_IN
- 143  002a 4a            	dec	a
- 144  002b 2608          	jrne	L54
- 146  002d b600          	ld	a,_S2_IN
- 147  002f 2604          	jrne	L54
- 148                     ; 67 					duty = 50; 
- 150  0031 35320000      	mov	_duty,#50
- 151  0035               L54:
- 152                     ; 69 				mainFsm=RUN;
- 154  0035 35050008      	mov	_mainFsm,#5
- 155                     ; 70 				break;
- 157  0039 2008          	jra	L53
- 158  003b               L5:
- 159                     ; 72 				case RUN:
- 159                     ; 73 				if(timeout10ms)
- 161  003b be00          	ldw	x,_timeout10ms
- 162  003d 2704          	jreq	L53
- 163                     ; 75 					mainFsm=SELCFG;
- 165  003f 35010008      	mov	_mainFsm,#1
- 166  0043               L53:
- 167                     ; 80 		UpdateTask();			
- 169  0043 cd0000        	call	_UpdateTask
- 172  0046 20bb          	jra	L52
- 300                     	xdef	_main
- 301                     	xdef	_debugCnt
- 302                     	xdef	_cntCheck
- 303                     	xref.b	_caseCnt
- 304                     	xref	_init_setup
- 305                     	xref	_UpdateTask
- 306                     	xref	_inputRead
- 307                     	xref.b	_S2_IN
- 308                     	xref.b	_S1_IN
- 309                     	xref.b	_timeout500ms
- 310                     	xref.b	_timeout50ms
- 311                     	xref.b	_timeout10ms
- 312                     	xdef	_RAW_Data
- 313                     	xref.b	_duty
- 314                     	xdef	_SndDip
- 315                     	xdef	_S2_enable
- 316                     	xdef	_S1_enable
- 317                     	xdef	_mainFsm
- 318                     	xdef	_flagCFG3
- 319                     	xdef	_flagCFG2
- 320                     	xdef	_flagCFG1
- 339                     	end
+  17                     	switch	.data
+  18  0000               _mainFsm:
+  19  0000 01            	dc.b	1
+  20  0001               _S1_enable:
+  21  0001 00            	dc.b	0
+  22  0002               _S2_enable:
+  23  0002 00            	dc.b	0
+  24  0003               _SndDip:
+  25  0003 01            	dc.b	1
+  26  0004               _debugCnt:
+  27  0004 0000          	dc.w	0
+  28  0006               _RAW_Data:
+  29  0006 0000          	dc.w	0
+  30                     ; 28 void main(void)
+  30                     ; 29 {
+  31                     	scross	off
+  32                     .text:	section	.text,new
+  33  0000               _main:
+  35                     ; 30 	init_setup();
+  36  0000 cd0000        	call	_init_setup
+  38  0003               L7:
+  39                     ; 33 		if (timeout500ms)
+  40  0003 ce0000        	ldw	x,_timeout500ms
+  41                     ; 38 		if (timeout50ms)
+  42  0006 ce0000        	ldw	x,_timeout50ms
+  43  0009 2703          	jreq	L51
+  44                     ; 40 			inputRead();
+  45  000b cd0000        	call	_inputRead
+  47  000e               L51:
+  48                     ; 43 		if (timeout10ms)
+  49  000e ce0000        	ldw	x,_timeout10ms
+  50  0011 276b          	jreq	L71
+  51                     ; 46 			switch (mainFsm)
+  52  0013 c60000        	ld	a,_mainFsm
+  54                     ; 77 				break;
+  55  0016 4a            	dec	a
+  56  0017 2705          	jreq	L3
+  57  0019 4a            	dec	a
+  58  001a 2759          	jreq	L5
+  59  001c 2060          	jra	L71
+  60  001e               L3:
+  61                     ; 48 				case SELCFG:
+  61                     ; 49 				if ((S1_IN==1) && (S2_IN==1))
+  62  001e ce0000        	ldw	x,_S1_IN
+  63  0021 a30001        	cpw	x,#1
+  64  0024 2610          	jrne	L52
+  66  0026 ce0000        	ldw	x,_S2_IN
+  67  0029 a30001        	cpw	x,#1
+  68  002c 2608          	jrne	L52
+  69                     ; 51 					S1_enable 	= 0;
+  70  002e 725f0001      	clr	_S1_enable
+  71                     ; 52 					S2_enable 	= 0;
+  72  0032 725f0002      	clr	_S2_enable
+  73  0036               L52:
+  74                     ; 55 				if ((S1_IN==0) && (S2_IN==1))
+  75  0036 ce0000        	ldw	x,_S1_IN
+  76  0039 2617          	jrne	L72
+  78  003b ce0000        	ldw	x,_S2_IN
+  79  003e a30001        	cpw	x,#1
+  80  0041 260f          	jrne	L72
+  81                     ; 57 					S1_enable 	= 1;
+  82  0043 35010001      	mov	_S1_enable,#1
+  83                     ; 58 					S2_enable 	= 0;
+  84  0047 725f0002      	clr	_S2_enable
+  85                     ; 59 					SndDip = dipRead(0);
+  86  004b 4f            	clr	a
+  87  004c cd0000        	call	_dipRead
+  89  004f c70003        	ld	_SndDip,a
+  90  0052               L72:
+  91                     ; 62 				if ((S1_IN==1) && (S2_IN==0))
+  92  0052 ce0000        	ldw	x,_S1_IN
+  93  0055 a30001        	cpw	x,#1
+  94  0058 2615          	jrne	L13
+  96  005a ce0000        	ldw	x,_S2_IN
+  97  005d 2610          	jrne	L13
+  98                     ; 64 					S1_enable 	= 0;
+  99  005f 725f0001      	clr	_S1_enable
+ 100                     ; 65 					S2_enable 	= 1;
+ 101  0063 35010002      	mov	_S2_enable,#1
+ 102                     ; 66 					SndDip = dipRead(1);
+ 103  0067 a601          	ld	a,#1
+ 104  0069 cd0000        	call	_dipRead
+ 106  006c c70003        	ld	_SndDip,a
+ 107  006f               L13:
+ 108                     ; 69 				mainFsm=RUN;
+ 109  006f 35020000      	mov	_mainFsm,#2
+ 110                     ; 70 				break;
+ 111  0073 2009          	jra	L71
+ 112  0075               L5:
+ 113                     ; 72 				case RUN:
+ 113                     ; 73 				if(timeout10ms)
+ 114  0075 ce0000        	ldw	x,_timeout10ms
+ 115  0078 2704          	jreq	L71
+ 116                     ; 75 					mainFsm=SELCFG;
+ 117  007a 35010000      	mov	_mainFsm,#1
+ 118  007e               L32:
+ 119  007e               L71:
+ 120                     ; 80 		UpdateTask();			
+ 121  007e cd0000        	call	_UpdateTask
+ 124  0081 2080          	jra	L7
+ 126                     	xdef	_main
+ 127                     	xdef	_debugCnt
+ 128                     	xref	_dipRead
+ 129                     	xref	_init_setup
+ 130                     	xref	_UpdateTask
+ 131                     	xref	_inputRead
+ 132                     	xref	_S2_IN
+ 133                     	xref	_S1_IN
+ 134                     	xref	_timeout500ms
+ 135                     	xref	_timeout50ms
+ 136                     	xref	_timeout10ms
+ 137                     	xdef	_RAW_Data
+ 138                     	xdef	_SndDip
+ 139                     	xdef	_S2_enable
+ 140                     	xdef	_S1_enable
+ 141                     	xdef	_mainFsm
+ 142                     	end

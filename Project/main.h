@@ -22,29 +22,15 @@
 #define __MAIN_H
 
 
-
 /* Includes ------------------------------------------------------------------*/
-#define FREQUENZA_MASTER 	16000000 	// 16MHz
-
-#define PWMfreq						50000
 
 //FSM
-#define WAIT							0
-#define CNT								1
-#define CHGINT						2
-#define CHGCOL						3
-#define CHGFUN						3
 
 #define MEMCFG						0
-#define SEL_LED_TYPE			6
 #define SELCFG						1
-#define SETMEMCFG1				2
-#define SETMEMCFG2				3
-#define SETMEMCFG3				4
-#define RUN								5
+#define RUN								2
 
 //#define  SOUND_DEBUG 
-#define INDIRIZZO_MEMORIA	0x4000
 #define OPTION_BYTE_AFR		0x4803   // Alternate function remapping option byte
 #define AFR0							0x01     //Alternate function remapping bit 0 */
 

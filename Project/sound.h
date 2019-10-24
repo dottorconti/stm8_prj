@@ -54,8 +54,8 @@ extern uint16_t 	caseCnt;
 /* Exported functions ------------------------------------------------------- */	
 
 void soundStone(uint8_t num);
-void monofrequenza ( uint32_t f1);
-void pausa(void);
+void setFrequency ( uint32_t f1);
+void pause(void);
 void sweep500_1k2(void);
 void sweep2k_2k8(void);
 void sweep2k_2k8_reverse(void);
@@ -64,5 +64,9 @@ void audio_test(void);
 void sweep1k_2k(void);
 void sweep2k8_2k(void);
 void sweep1k2_500(void);
+void song(uint16_t note[]);
+
+void birtdaySong(void);
+void hornGeneralLee(void);
 
 #endif

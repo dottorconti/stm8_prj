@@ -28,8 +28,9 @@ extern bool			timeout500msISR;
 extern uint8_t	counter10ms;
 
 
-extern	uint8_t S1_IN;
-extern	uint8_t S2_IN;
+extern	bool S1_IN;
+extern	bool S2_IN;
+extern	bool S2_IN;
 
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */	

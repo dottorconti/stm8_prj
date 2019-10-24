@@ -1,518 +1,609 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.10.2 - 02 Nov 2011
    3                     ; Generator (Limited) V4.3.7 - 29 Nov 2011
-   4                     ; Optimizer V4.3.6 - 29 Nov 2011
-  60                     ; 17 void clock_setup(void) 
-  60                     ; 18 {
-  62                     .text:	section	.text,new
-  63  0000               _clock_setup:
-  67                     ; 19 	CLK_DeInit();
-  69  0000 cd0000        	call	_CLK_DeInit
-  71                     ; 20 	CLK_HSECmd(DISABLE);
-  73  0003 5f            	clrw	x
-  74  0004 cd0000        	call	_CLK_HSECmd
-  76                     ; 21 	CLK_LSICmd(DISABLE);
-  78  0007 5f            	clrw	x
-  79  0008 cd0000        	call	_CLK_LSICmd
-  81                     ; 22 	CLK_HSICmd(ENABLE);
-  83  000b ae0001        	ldw	x,#1
-  84  000e cd0000        	call	_CLK_HSICmd
-  87  0011               L32:
-  88                     ; 23 	while(CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE);
-  90  0011 ae0102        	ldw	x,#258
-  91  0014 cd0000        	call	_CLK_GetFlagStatus
-  93  0017 5d            	tnzw	x
-  94  0018 27f7          	jreq	L32
-  95                     ; 24 	CLK_ClockSwitchCmd(ENABLE);
-  97  001a ae0001        	ldw	x,#1
-  98  001d cd0000        	call	_CLK_ClockSwitchCmd
- 100                     ; 25 	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);	//     /1
- 102  0020 5f            	clrw	x
- 103  0021 cd0000        	call	_CLK_HSIPrescalerConfig
- 105                     ; 26 	CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);	//         /1
- 107  0024 ae0080        	ldw	x,#128
- 108  0027 cd0000        	call	_CLK_SYSCLKConfig
- 110                     ; 27 	CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI,
- 110                     ; 28 	DISABLE, CLK_CURRENTCLOCKSTATE_ENABLE);
- 112  002a ae0001        	ldw	x,#1
- 113  002d 89            	pushw	x
- 114  002e 5f            	clrw	x
- 115  002f 89            	pushw	x
- 116  0030 ae00e1        	ldw	x,#225
- 117  0033 89            	pushw	x
- 118  0034 ae0001        	ldw	x,#1
- 119  0037 cd0000        	call	_CLK_ClockSwitchConfig
- 121  003a 5b06          	addw	sp,#6
- 122                     ; 29 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
- 124  003c 5f            	clrw	x
- 125  003d 89            	pushw	x
- 126  003e 5c            	incw	x
- 127  003f cd0000        	call	_CLK_PeripheralClockConfig
- 129  0042 85            	popw	x
- 130                     ; 30 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, DISABLE);
- 132  0043 5f            	clrw	x
- 133  0044 89            	pushw	x
- 134  0045 cd0000        	call	_CLK_PeripheralClockConfig
- 136  0048 85            	popw	x
- 137                     ; 31 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
- 139  0049 5f            	clrw	x
- 140  004a 89            	pushw	x
- 141  004b ae0013        	ldw	x,#19
- 142  004e cd0000        	call	_CLK_PeripheralClockConfig
- 144  0051 85            	popw	x
- 145                     ; 32 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
- 147  0052 5f            	clrw	x
- 148  0053 89            	pushw	x
- 149  0054 ae0012        	ldw	x,#18
- 150  0057 cd0000        	call	_CLK_PeripheralClockConfig
- 152  005a 85            	popw	x
- 153                     ; 33 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, DISABLE);
- 155  005b 5f            	clrw	x
- 156  005c 89            	pushw	x
- 157  005d ae0003        	ldw	x,#3
- 158  0060 cd0000        	call	_CLK_PeripheralClockConfig
- 160  0063 85            	popw	x
- 161                     ; 34 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
- 163  0064 ae0001        	ldw	x,#1
- 164  0067 89            	pushw	x
- 165  0068 ae0007        	ldw	x,#7
- 166  006b cd0000        	call	_CLK_PeripheralClockConfig
- 168  006e 85            	popw	x
- 169                     ; 35 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, ENABLE);
- 171  006f ae0001        	ldw	x,#1
- 172  0072 89            	pushw	x
- 173  0073 ae0005        	ldw	x,#5
- 174  0076 cd0000        	call	_CLK_PeripheralClockConfig
- 176  0079 85            	popw	x
- 177                     ; 36 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER4, ENABLE);
- 179  007a ae0001        	ldw	x,#1
- 180  007d 89            	pushw	x
- 181  007e ae0004        	ldw	x,#4
- 182  0081 cd0000        	call	_CLK_PeripheralClockConfig
- 184  0084 85            	popw	x
- 185                     ; 37 }
- 188  0085 81            	ret	
- 213                     ; 46 void GPIO_setup(void) 
- 213                     ; 47 {
- 214                     .text:	section	.text,new
- 215  0000               _GPIO_setup:
- 219                     ; 49 	GPIO_DeInit(GPIOB);
- 221  0000 ae5005        	ldw	x,#20485
- 222  0003 cd0000        	call	_GPIO_DeInit
- 224                     ; 50 	GPIO_DeInit(GPIOC);
- 226  0006 ae500a        	ldw	x,#20490
- 227  0009 cd0000        	call	_GPIO_DeInit
- 229                     ; 51 	GPIO_DeInit(GPIOD);
- 231  000c ae500f        	ldw	x,#20495
- 232  000f cd0000        	call	_GPIO_DeInit
- 234                     ; 80 	GPIO_Init(GPIOC, GPIO_PIN_4, GPIO_MODE_OUT_PP_LOW_SLOW);			// sound out
- 236  0012 ae00c0        	ldw	x,#192
- 237  0015 89            	pushw	x
- 238  0016 ae0010        	ldw	x,#16
- 239  0019 89            	pushw	x
- 240  001a ae500a        	ldw	x,#20490
- 241  001d cd0000        	call	_GPIO_Init
- 243  0020 5b04          	addw	sp,#4
- 244                     ; 82 	GPIO_Init(GPIOB, GPIO_PIN_4, GPIO_MODE_IN_FL_NO_IT);			// dip1
- 246  0022 5f            	clrw	x
- 247  0023 89            	pushw	x
- 248  0024 ae0010        	ldw	x,#16
- 249  0027 89            	pushw	x
- 250  0028 ae5005        	ldw	x,#20485
- 251  002b cd0000        	call	_GPIO_Init
- 253  002e 5b04          	addw	sp,#4
- 254                     ; 83 	GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_IN_FL_NO_IT);			// dip2
- 256  0030 5f            	clrw	x
- 257  0031 89            	pushw	x
- 258  0032 ae0020        	ldw	x,#32
- 259  0035 89            	pushw	x
- 260  0036 ae5005        	ldw	x,#20485
- 261  0039 cd0000        	call	_GPIO_Init
- 263  003c 5b04          	addw	sp,#4
- 264                     ; 84 	GPIO_Init(GPIOD, GPIO_PIN_6, GPIO_MODE_IN_FL_NO_IT);			// en
- 266  003e 5f            	clrw	x
- 267  003f 89            	pushw	x
- 268  0040 ae0040        	ldw	x,#64
- 269  0043 89            	pushw	x
- 270  0044 ae500f        	ldw	x,#20495
- 271  0047 cd0000        	call	_GPIO_Init
- 273  004a 5b04          	addw	sp,#4
- 274                     ; 85 }
- 277  004c 81            	ret	
- 308                     ; 87 void TIM1_setup(void)
- 308                     ; 88 {
- 309                     .text:	section	.text,new
- 310  0000               _TIM1_setup:
- 314                     ; 89 	TIM1_DeInit();
- 316  0000 cd0000        	call	_TIM1_DeInit
- 318                     ; 90 	TIM1_TimeBaseInit(TIM1_ICPSC_DIV2,TIM1_COUNTERMODE_UP,8000,0);
- 320  0003 4b00          	push	#0
- 321  0005 ae1f40        	ldw	x,#8000
- 322  0008 89            	pushw	x
- 323  0009 5f            	clrw	x
- 324  000a 89            	pushw	x
- 325  000b ae0004        	ldw	x,#4
- 326  000e cd0000        	call	_TIM1_TimeBaseInit
- 328  0011 5b05          	addw	sp,#5
- 329                     ; 105 	TIM1_SelectOCxM(TIM1_CHANNEL_4, TIM1_OCMODE_PWM2); //GREEN OUT2
- 331  0013 ae0070        	ldw	x,#112
- 332  0016 89            	pushw	x
- 333  0017 ae0003        	ldw	x,#3
- 334  001a cd0000        	call	_TIM1_SelectOCxM
- 336  001d 85            	popw	x
- 337                     ; 106 	TIM1_OC4Init(TIM1_OCMODE_PWM2, TIM1_OUTPUTSTATE_ENABLE,0, TIM1_OCPOLARITY_LOW, TIM1_OCIDLESTATE_SET);
- 339  001e ae0055        	ldw	x,#85
- 340  0021 89            	pushw	x
- 341  0022 ae0022        	ldw	x,#34
- 342  0025 89            	pushw	x
- 343  0026 5f            	clrw	x
- 344  0027 89            	pushw	x
- 345  0028 ae0011        	ldw	x,#17
- 346  002b 89            	pushw	x
- 347  002c ae0070        	ldw	x,#112
- 348  002f cd0000        	call	_TIM1_OC4Init
- 350  0032 5b08          	addw	sp,#8
- 351                     ; 107 	TIM1_OC4PreloadConfig(ENABLE);
- 353  0034 ae0001        	ldw	x,#1
- 354  0037 cd0000        	call	_TIM1_OC4PreloadConfig
- 356                     ; 110 	TIM1_ARRPreloadConfig(ENABLE);
- 358  003a ae0001        	ldw	x,#1
- 359  003d cd0000        	call	_TIM1_ARRPreloadConfig
- 361                     ; 111 	TIM1_Cmd(ENABLE);
- 363  0040 ae0001        	ldw	x,#1
- 364  0043 cd0000        	call	_TIM1_Cmd
- 366                     ; 112 	TIM1_CtrlPWMOutputs(ENABLE);
- 368  0046 ae0001        	ldw	x,#1
- 370                     ; 113 }
- 373  0049 cc0000        	jp	_TIM1_CtrlPWMOutputs
- 401                     ; 115 void TIM2_setup(void)
- 401                     ; 116 {
- 402                     .text:	section	.text,new
- 403  0000               _TIM2_setup:
- 407                     ; 117 	TIM2_DeInit();
- 409  0000 cd0000        	call	_TIM2_DeInit
- 411                     ; 118 	TIM2_SetCounter(0x00);
- 413  0003 5f            	clrw	x
- 414  0004 cd0000        	call	_TIM2_SetCounter
- 416                     ; 119 	TIM2_TimeBaseInit(TIM2_PRESCALER_256, 625);// 625 Chiamata ogni 10ms - 1250 Chiamata ogni 20ms
- 418  0007 ae0271        	ldw	x,#625
- 419  000a 89            	pushw	x
- 420  000b ae0008        	ldw	x,#8
- 421  000e cd0000        	call	_TIM2_TimeBaseInit
- 423  0011 85            	popw	x
- 424                     ; 120 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
- 426  0012 ae0001        	ldw	x,#1
- 427  0015 89            	pushw	x
- 428  0016 cd0000        	call	_TIM2_ITConfig
- 430  0019 85            	popw	x
- 431                     ; 121 	TIM2_Cmd(ENABLE);
- 433  001a ae0001        	ldw	x,#1
- 435                     ; 122 }
- 438  001d cc0000        	jp	_TIM2_Cmd
- 469                     ; 124 void TIM4_setup(void)
- 469                     ; 125 {
- 470                     .text:	section	.text,new
- 471  0000               _TIM4_setup:
- 475                     ; 126 	TIM4_DeInit();
- 477  0000 cd0000        	call	_TIM4_DeInit
- 479                     ; 127 	TIM4_SetCounter(0x00);
- 481  0003 4f            	clr	a
- 482  0004 cd0000        	call	_TIM4_SetCounter
- 484                     ; 128 	TIM4_ClearFlag(TIM4_IT_UPDATE);
- 486  0007 ae0001        	ldw	x,#1
- 487  000a cd0000        	call	_TIM4_ClearFlag
- 489                     ; 129 	TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
- 491  000d ae0001        	ldw	x,#1
- 492  0010 cd0000        	call	_TIM4_ClearITPendingBit
- 494                     ; 130 	TIM4_PrescalerConfig(TIM4_PRESCALER_128, TIM4_PSCRELOADMODE_UPDATE);
- 496  0013 5f            	clrw	x
- 497  0014 89            	pushw	x
- 498  0015 ae0007        	ldw	x,#7
- 499  0018 cd0000        	call	_TIM4_PrescalerConfig
- 501  001b 85            	popw	x
- 502                     ; 131 	TIM4_TimeBaseInit(TIM4_PRESCALER_128, 125);
- 504  001c 4b7d          	push	#125
- 505  001e ae0007        	ldw	x,#7
- 506  0021 cd0000        	call	_TIM4_TimeBaseInit
- 508  0024 ae0001        	ldw	x,#1
- 509  0027 84            	pop	a
- 510                     ; 132 	TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE);
- 512  0028 89            	pushw	x
- 513  0029 cd0000        	call	_TIM4_ITConfig
- 515  002c 85            	popw	x
- 516                     ; 133 	TIM4_Cmd(ENABLE);
- 518  002d ae0001        	ldw	x,#1
- 520                     ; 134 }
- 523  0030 cc0000        	jp	_TIM4_Cmd
- 548                     ; 136 void init_u_Port(void)
- 548                     ; 137 {
- 549                     .text:	section	.text,new
- 550  0000               _init_u_Port:
- 554                     ; 138 	GPIO_WriteLow(GPIOB, GPIO_PIN_4);//OK
- 556  0000 ae0010        	ldw	x,#16
- 557  0003 ad2c          	call	LC001
- 558  0005 ad2a          	call	LC001
- 559  0007 89            	pushw	x
- 560  0008 ae500a        	ldw	x,#20490
- 561  000b cd0000        	call	_GPIO_WriteHigh
- 563  000e 85            	popw	x
- 564                     ; 141 	GPIO_WriteLow(GPIOD, GPIO_PIN_2); //OK
- 566  000f ae0004        	ldw	x,#4
- 567  0012 89            	pushw	x
- 568  0013 ae500f        	ldw	x,#20495
- 569  0016 cd0000        	call	_GPIO_WriteLow
- 571  0019 85            	popw	x
- 572                     ; 142 	GPIO_WriteLow(GPIOD, GPIO_PIN_6);//OK
- 574  001a ae0040        	ldw	x,#64
- 575  001d 89            	pushw	x
- 576  001e ae500f        	ldw	x,#20495
- 577  0021 cd0000        	call	_GPIO_WriteLow
- 579  0024 85            	popw	x
- 580                     ; 143 	GPIO_WriteLow(GPIOA, GPIO_PIN_2);	
- 582  0025 ae0004        	ldw	x,#4
- 583  0028 89            	pushw	x
- 584  0029 ae5000        	ldw	x,#20480
- 585  002c cd0000        	call	_GPIO_WriteLow
- 587  002f 85            	popw	x
- 588                     ; 144 }
- 591  0030 81            	ret	
- 592  0031               LC001:
- 593  0031 89            	pushw	x
- 594  0032 ae5005        	ldw	x,#20485
- 595  0035 cd0000        	call	_GPIO_WriteLow
- 597  0038 85            	popw	x
- 598                     ; 140 	GPIO_WriteHigh(GPIOC, GPIO_PIN_5);//OK
- 600  0039 ae0020        	ldw	x,#32
- 601  003c 81            	ret	
- 640                     ; 146 void setAlternateBit(void)
- 640                     ; 147 {
- 641                     .text:	section	.text,new
- 642  0000               _setAlternateBit:
- 644  0000 89            	pushw	x
- 645       00000002      OFST:	set	2
- 648                     ; 149 		uint16_t stored_data = FLASH_ReadOptionByte(OPTION_BYTE_AFR );
- 650  0001 ae4803        	ldw	x,#18435
- 651  0004 cd0000        	call	_FLASH_ReadOptionByte
- 653  0007 1f01          	ldw	(OFST-1,sp),x
- 654                     ; 151 		if( ( FLASH_OPTIONBYTE_ERROR == stored_data ) ||
- 654                     ; 152 			( AFR0 != (uint8_t)( stored_data>>8 ) ) )
- 656  0009 a35555        	cpw	x,#21845
- 657  000c 2705          	jreq	L711
- 659  000e 7b01          	ld	a,(OFST-1,sp)
- 660  0010 4a            	dec	a
- 661  0011 2721          	jreq	L511
- 662  0013               L711:
- 663                     ; 154 				FLASH_Unlock(FLASH_MEMTYPE_DATA);
- 665  0013 ae00f7        	ldw	x,#247
- 666  0016 cd0000        	call	_FLASH_Unlock
- 668                     ; 155 				FLASH_EraseOptionByte(OPTION_BYTE_AFR);
- 670  0019 ae4803        	ldw	x,#18435
- 671  001c cd0000        	call	_FLASH_EraseOptionByte
- 673                     ; 156 				FLASH_ProgramOptionByte(OPTION_BYTE_AFR, AFR0);
- 675  001f 4b01          	push	#1
- 676  0021 ae4803        	ldw	x,#18435
- 677  0024 cd0000        	call	_FLASH_ProgramOptionByte
- 679  0027 ae00f7        	ldw	x,#247
- 680  002a 84            	pop	a
- 681                     ; 157 				FLASH_Lock(FLASH_MEMTYPE_DATA);
- 683  002b cd0000        	call	_FLASH_Lock
- 685                     ; 160 				IWDG->KR = IWDG_KEY_ENABLE;
- 687  002e 35cc50e0      	mov	20704,#204
- 688  0032               L121:
- 689                     ; 161 				while(1);
- 691  0032 20fe          	jra	L121
- 692  0034               L511:
- 693                     ; 163 }
- 696  0034 85            	popw	x
- 697  0035 81            	ret	
- 740                     ; 165 uint16_t readADC1(uint16_t channel) 
- 740                     ; 166 {
- 741                     .text:	section	.text,new
- 742  0000               _readADC1:
- 744  0000 89            	pushw	x
- 745  0001 89            	pushw	x
- 746       00000002      OFST:	set	2
- 749                     ; 167      uint16_t val=0;
- 751  0002 5f            	clrw	x
- 752  0003 1f01          	ldw	(OFST-1,sp),x
- 753                     ; 169      ADC1->CSR |= ((0x0F)&channel); // select channel
- 755  0005 7b04          	ld	a,(OFST+2,sp)
- 756  0007 a40f          	and	a,#15
- 757  0009 ca5400        	or	a,21504
- 758  000c c75400        	ld	21504,a
- 759                     ; 170      ADC1->CR2 |= (1<<3); // Right Aligned Data
- 761  000f 72165402      	bset	21506,#3
- 762                     ; 171      ADC1->CR1 |= (1<<0); // ADC ON 
- 764  0013 72105401      	bset	21505,#0
- 765                     ; 172      ADC1->CR1 |= (1<<0); // ADC Start Conversion
- 767  0017 72105401      	bset	21505,#0
- 769  001b               L151:
- 770                     ; 173      while(((ADC1->CSR)&(1<<7))== 0); // Wait till EOC
- 772  001b 720f5400fb    	btjf	21504,#7,L151
- 773                     ; 174      val |= (uint16_t)ADC1->DRL;
- 775  0020 c65405        	ld	a,21509
- 776  0023 5f            	clrw	x
- 777  0024 97            	ld	xl,a
- 778  0025 01            	rrwa	x,a
- 779  0026 1a02          	or	a,(OFST+0,sp)
- 780  0028 01            	rrwa	x,a
- 781  0029 1a01          	or	a,(OFST-1,sp)
- 782  002b 01            	rrwa	x,a
- 783  002c 1f01          	ldw	(OFST-1,sp),x
- 784                     ; 175      val |= (uint16_t)ADC1->DRH<<8;
- 786  002e 5f            	clrw	x
- 787  002f c65404        	ld	a,21508
- 788  0032 97            	ld	xl,a
- 789  0033 7b02          	ld	a,(OFST+0,sp)
- 790  0035 01            	rrwa	x,a
- 791  0036 1a01          	or	a,(OFST-1,sp)
- 792  0038 01            	rrwa	x,a
- 793  0039 1f01          	ldw	(OFST-1,sp),x
- 794                     ; 176      ADC1->CR1 &= ~(1<<0); // ADC Stop Conversion
- 796  003b 72115401      	bres	21505,#0
- 797                     ; 177      val &= 0x03ff;
- 799  003f 7b01          	ld	a,(OFST-1,sp)
- 800  0041 a403          	and	a,#3
- 801  0043 6b01          	ld	(OFST-1,sp),a
- 802                     ; 178      return (val);
- 804  0045 1e01          	ldw	x,(OFST-1,sp)
- 807  0047 5b04          	addw	sp,#4
- 808  0049 81            	ret	
- 845                     ; 181 void ADC_setup(uint8_t ch_sel)
- 845                     ; 182 {
- 846                     .text:	section	.text,new
- 847  0000               _ADC_setup:
- 849  0000 88            	push	a
- 850       00000000      OFST:	set	0
- 853                     ; 183 	ADC1_DeInit();	
- 855  0001 cd0000        	call	_ADC1_DeInit
- 857                     ; 185 	ADC1_Init(ADC1_CONVERSIONMODE_SINGLE,
- 857                     ; 186 						ch_sel,
- 857                     ; 187 						ADC1_PRESSEL_FCPU_D4,
- 857                     ; 188 						ADC1_EXTTRIG_GPIO,
- 857                     ; 189 						DISABLE,
- 857                     ; 190 						ADC1_ALIGN_RIGHT,
- 857                     ; 191 						ch_sel,
- 857                     ; 192 						DISABLE);
- 859  0004 5f            	clrw	x
- 860  0005 89            	pushw	x
- 861  0006 7b03          	ld	a,(OFST+3,sp)
- 862  0008 97            	ld	xl,a
- 863  0009 89            	pushw	x
- 864  000a ae0008        	ldw	x,#8
- 865  000d 89            	pushw	x
- 866  000e 5f            	clrw	x
- 867  000f 89            	pushw	x
- 868  0010 ae0010        	ldw	x,#16
- 869  0013 89            	pushw	x
- 870  0014 58            	sllw	x
- 871  0015 89            	pushw	x
- 872  0016 7b0d          	ld	a,(OFST+13,sp)
- 873  0018 5f            	clrw	x
- 874  0019 97            	ld	xl,a
- 875  001a 89            	pushw	x
- 876  001b 5f            	clrw	x
- 877  001c cd0000        	call	_ADC1_Init
- 879  001f 5b0e          	addw	sp,#14
- 880                     ; 194 	ADC1_ITConfig(ADC1_IT_EOCIE, ENABLE);
- 882  0021 ae0001        	ldw	x,#1
- 883  0024 89            	pushw	x
- 884  0025 ae0020        	ldw	x,#32
- 885  0028 cd0000        	call	_ADC1_ITConfig
- 887  002b 85            	popw	x
- 888                     ; 211 }
- 891  002c 84            	pop	a
- 892  002d 81            	ret	
- 921                     ; 213 void Read_Protect_Flash(void)
- 921                     ; 214 {
- 922                     .text:	section	.text,new
- 923  0000               _Read_Protect_Flash:
- 927                     ; 215     FLASH_SetProgrammingTime(FLASH_PROGRAMTIME_STANDARD);
- 929  0000 5f            	clrw	x
- 930  0001 cd0000        	call	_FLASH_SetProgrammingTime
- 933  0004 201b          	jra	L502
- 934  0006               L302:
- 935                     ; 218         FLASH_Unlock(FLASH_MEMTYPE_DATA);
- 937  0006 ae00f7        	ldw	x,#247
- 938  0009 cd0000        	call	_FLASH_Unlock
- 940                     ; 220         FLASH_EraseOptionByte(0x4800);
- 942  000c ae4800        	ldw	x,#18432
- 943  000f cd0000        	call	_FLASH_EraseOptionByte
- 945                     ; 221         FLASH_ProgramOptionByte(0x4800, 0xAA);
- 947  0012 4baa          	push	#170
- 948  0014 ae4800        	ldw	x,#18432
- 949  0017 cd0000        	call	_FLASH_ProgramOptionByte
- 951  001a ae00f7        	ldw	x,#247
- 952  001d 84            	pop	a
- 953                     ; 223         FLASH_Lock(FLASH_MEMTYPE_DATA);
- 955  001e cd0000        	call	_FLASH_Lock
- 957  0021               L502:
- 958                     ; 216     while(FLASH_ReadOptionByte(0x4800) != 0xAA)
- 960  0021 ae4800        	ldw	x,#18432
- 961  0024 cd0000        	call	_FLASH_ReadOptionByte
- 963  0027 a300aa        	cpw	x,#170
- 964  002a 26da          	jrne	L302
- 965                     ; 225 }
- 968  002c 81            	ret	
-1003                     ; 236 void assert_failed(uint8_t* file, uint32_t line)
-1003                     ; 237 { 
-1004                     .text:	section	.text,new
-1005  0000               _assert_failed:
-1009  0000               L722:
-1010  0000 20fe          	jra	L722
-1023                     	xdef	_ADC_setup
-1024                     	xdef	_readADC1
-1025                     	xdef	_Read_Protect_Flash
-1026                     	xdef	_setAlternateBit
-1027                     	xdef	_init_u_Port
-1028                     	xdef	_GPIO_setup
-1029                     	xdef	_clock_setup
-1030                     	xdef	_TIM4_setup
-1031                     	xdef	_TIM2_setup
-1032                     	xdef	_TIM1_setup
-1033                     	xdef	_assert_failed
-1034                     	xref	_TIM4_ClearITPendingBit
-1035                     	xref	_TIM4_ClearFlag
-1036                     	xref	_TIM4_SetCounter
-1037                     	xref	_TIM4_PrescalerConfig
-1038                     	xref	_TIM4_ITConfig
-1039                     	xref	_TIM4_Cmd
-1040                     	xref	_TIM4_TimeBaseInit
-1041                     	xref	_TIM4_DeInit
-1042                     	xref	_TIM2_SetCounter
-1043                     	xref	_TIM2_ITConfig
-1044                     	xref	_TIM2_Cmd
-1045                     	xref	_TIM2_TimeBaseInit
-1046                     	xref	_TIM2_DeInit
-1047                     	xref	_TIM1_SelectOCxM
-1048                     	xref	_TIM1_OC4PreloadConfig
-1049                     	xref	_TIM1_ARRPreloadConfig
-1050                     	xref	_TIM1_CtrlPWMOutputs
-1051                     	xref	_TIM1_Cmd
-1052                     	xref	_TIM1_OC4Init
-1053                     	xref	_TIM1_TimeBaseInit
-1054                     	xref	_TIM1_DeInit
-1055                     	xref	_GPIO_WriteLow
-1056                     	xref	_GPIO_WriteHigh
-1057                     	xref	_GPIO_Init
-1058                     	xref	_GPIO_DeInit
-1059                     	xref	_FLASH_SetProgrammingTime
-1060                     	xref	_FLASH_EraseOptionByte
-1061                     	xref	_FLASH_ProgramOptionByte
-1062                     	xref	_FLASH_ReadOptionByte
-1063                     	xref	_FLASH_Lock
-1064                     	xref	_FLASH_Unlock
-1065                     	xref	_CLK_GetFlagStatus
-1066                     	xref	_CLK_SYSCLKConfig
-1067                     	xref	_CLK_HSIPrescalerConfig
-1068                     	xref	_CLK_ClockSwitchConfig
-1069                     	xref	_CLK_PeripheralClockConfig
-1070                     	xref	_CLK_ClockSwitchCmd
-1071                     	xref	_CLK_LSICmd
-1072                     	xref	_CLK_HSICmd
-1073                     	xref	_CLK_HSECmd
-1074                     	xref	_CLK_DeInit
-1075                     	xref	_ADC1_ITConfig
-1076                     	xref	_ADC1_Init
-1077                     	xref	_ADC1_DeInit
-1096                     	end
+  17                     ; 17 void clock_setup(void) 
+  17                     ; 18 {
+  18                     	scross	off
+  19                     .text:	section	.text,new
+  20  0000               _clock_setup:
+  22                     ; 19 	CLK_DeInit();
+  23  0000 cd0000        	call	_CLK_DeInit
+  25                     ; 20 	CLK_HSECmd(DISABLE);
+  26  0003 5f            	clrw	x
+  27  0004 cd0000        	call	_CLK_HSECmd
+  29                     ; 21 	CLK_LSICmd(DISABLE);
+  30  0007 5f            	clrw	x
+  31  0008 cd0000        	call	_CLK_LSICmd
+  33                     ; 22 	CLK_HSICmd(ENABLE);
+  34  000b ae0001        	ldw	x,#1
+  35  000e cd0000        	call	_CLK_HSICmd
+  38  0011               L5:
+  39                     ; 23 	while(CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE);
+  40  0011 ae0102        	ldw	x,#258
+  41  0014 cd0000        	call	_CLK_GetFlagStatus
+  43  0017 a30000        	cpw	x,#0
+  44  001a 27f5          	jreq	L5
+  45                     ; 24 	CLK_ClockSwitchCmd(ENABLE);
+  46  001c ae0001        	ldw	x,#1
+  47  001f cd0000        	call	_CLK_ClockSwitchCmd
+  49                     ; 25 	CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);	
+  50  0022 5f            	clrw	x
+  51  0023 cd0000        	call	_CLK_HSIPrescalerConfig
+  53                     ; 26 	CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+  54  0026 ae0080        	ldw	x,#128
+  55  0029 cd0000        	call	_CLK_SYSCLKConfig
+  57                     ; 27 	CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI,
+  57                     ; 28 	DISABLE, CLK_CURRENTCLOCKSTATE_ENABLE);
+  58  002c ae0001        	ldw	x,#1
+  59  002f 89            	pushw	x
+  60  0030 5f            	clrw	x
+  61  0031 89            	pushw	x
+  62  0032 ae00e1        	ldw	x,#225
+  63  0035 89            	pushw	x
+  64  0036 ae0001        	ldw	x,#1
+  65  0039 cd0000        	call	_CLK_ClockSwitchConfig
+  67  003c 5b06          	addw	sp,#6
+  68                     ; 29 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
+  69  003e 5f            	clrw	x
+  70  003f 89            	pushw	x
+  71  0040 ae0001        	ldw	x,#1
+  72  0043 cd0000        	call	_CLK_PeripheralClockConfig
+  74  0046 85            	popw	x
+  75                     ; 30 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, DISABLE);
+  76  0047 5f            	clrw	x
+  77  0048 89            	pushw	x
+  78  0049 5f            	clrw	x
+  79  004a cd0000        	call	_CLK_PeripheralClockConfig
+  81  004d 85            	popw	x
+  82                     ; 31 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
+  83  004e 5f            	clrw	x
+  84  004f 89            	pushw	x
+  85  0050 ae0013        	ldw	x,#19
+  86  0053 cd0000        	call	_CLK_PeripheralClockConfig
+  88  0056 85            	popw	x
+  89                     ; 32 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
+  90  0057 5f            	clrw	x
+  91  0058 89            	pushw	x
+  92  0059 ae0012        	ldw	x,#18
+  93  005c cd0000        	call	_CLK_PeripheralClockConfig
+  95  005f 85            	popw	x
+  96                     ; 33 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, DISABLE);
+  97  0060 5f            	clrw	x
+  98  0061 89            	pushw	x
+  99  0062 ae0003        	ldw	x,#3
+ 100  0065 cd0000        	call	_CLK_PeripheralClockConfig
+ 102  0068 85            	popw	x
+ 103                     ; 34 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
+ 104  0069 ae0001        	ldw	x,#1
+ 105  006c 89            	pushw	x
+ 106  006d ae0007        	ldw	x,#7
+ 107  0070 cd0000        	call	_CLK_PeripheralClockConfig
+ 109  0073 85            	popw	x
+ 110                     ; 35 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, ENABLE);
+ 111  0074 ae0001        	ldw	x,#1
+ 112  0077 89            	pushw	x
+ 113  0078 ae0005        	ldw	x,#5
+ 114  007b cd0000        	call	_CLK_PeripheralClockConfig
+ 116  007e 85            	popw	x
+ 117                     ; 36 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER4, ENABLE);
+ 118  007f ae0001        	ldw	x,#1
+ 119  0082 89            	pushw	x
+ 120  0083 ae0004        	ldw	x,#4
+ 121  0086 cd0000        	call	_CLK_PeripheralClockConfig
+ 123  0089 85            	popw	x
+ 124                     ; 37 }
+ 125  008a 81            	ret
+ 127                     ; 39 void GPIO_setup(void) 
+ 127                     ; 40 {
+ 128                     .text:	section	.text,new
+ 129  0000               _GPIO_setup:
+ 131                     ; 41 	GPIO_DeInit(GPIOA);
+ 132  0000 ae5000        	ldw	x,#20480
+ 133  0003 cd0000        	call	_GPIO_DeInit
+ 135                     ; 42 	GPIO_DeInit(GPIOB);
+ 136  0006 ae5005        	ldw	x,#20485
+ 137  0009 cd0000        	call	_GPIO_DeInit
+ 139                     ; 43 	GPIO_DeInit(GPIOC);
+ 140  000c ae500a        	ldw	x,#20490
+ 141  000f cd0000        	call	_GPIO_DeInit
+ 143                     ; 44 	GPIO_DeInit(GPIOD);
+ 144  0012 ae500f        	ldw	x,#20495
+ 145  0015 cd0000        	call	_GPIO_DeInit
+ 147                     ; 57 	GPIO_Init(GPIOA, GPIO_PIN_1, GPIO_MODE_IN_FL_NO_IT); 	// not used 
+ 148  0018 5f            	clrw	x
+ 149  0019 89            	pushw	x
+ 150  001a ae0002        	ldw	x,#2
+ 151  001d 89            	pushw	x
+ 152  001e ae5000        	ldw	x,#20480
+ 153  0021 cd0000        	call	_GPIO_Init
+ 155  0024 5b04          	addw	sp,#4
+ 156                     ; 58 	GPIO_Init(GPIOA, GPIO_PIN_2, GPIO_MODE_IN_FL_NO_IT); 			// not used
+ 157  0026 5f            	clrw	x
+ 158  0027 89            	pushw	x
+ 159  0028 ae0004        	ldw	x,#4
+ 160  002b 89            	pushw	x
+ 161  002c ae5000        	ldw	x,#20480
+ 162  002f cd0000        	call	_GPIO_Init
+ 164  0032 5b04          	addw	sp,#4
+ 165                     ; 59 	GPIO_Init(GPIOA, GPIO_PIN_3, GPIO_MODE_IN_FL_NO_IT);	// not used
+ 166  0034 5f            	clrw	x
+ 167  0035 89            	pushw	x
+ 168  0036 ae0008        	ldw	x,#8
+ 169  0039 89            	pushw	x
+ 170  003a ae5000        	ldw	x,#20480
+ 171  003d cd0000        	call	_GPIO_Init
+ 173  0040 5b04          	addw	sp,#4
+ 174                     ; 61 	GPIO_Init(GPIOB, GPIO_PIN_4, GPIO_MODE_IN_FL_NO_IT);				// in_a
+ 175  0042 5f            	clrw	x
+ 176  0043 89            	pushw	x
+ 177  0044 ae0010        	ldw	x,#16
+ 178  0047 89            	pushw	x
+ 179  0048 ae5005        	ldw	x,#20485
+ 180  004b cd0000        	call	_GPIO_Init
+ 182  004e 5b04          	addw	sp,#4
+ 183                     ; 62 	GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_IN_FL_NO_IT);				// in_b
+ 184  0050 5f            	clrw	x
+ 185  0051 89            	pushw	x
+ 186  0052 ae0020        	ldw	x,#32
+ 187  0055 89            	pushw	x
+ 188  0056 ae5005        	ldw	x,#20485
+ 189  0059 cd0000        	call	_GPIO_Init
+ 191  005c 5b04          	addw	sp,#4
+ 192                     ; 64 	GPIO_Init(GPIOC, GPIO_PIN_3, GPIO_MODE_IN_FL_NO_IT);				// in_flash
+ 193  005e 5f            	clrw	x
+ 194  005f 89            	pushw	x
+ 195  0060 ae0008        	ldw	x,#8
+ 196  0063 89            	pushw	x
+ 197  0064 ae500a        	ldw	x,#20490
+ 198  0067 cd0000        	call	_GPIO_Init
+ 200  006a 5b04          	addw	sp,#4
+ 201                     ; 65 	GPIO_Init(GPIOC, GPIO_PIN_4, GPIO_MODE_IN_FL_NO_IT);			// not used
+ 202  006c 5f            	clrw	x
+ 203  006d 89            	pushw	x
+ 204  006e ae0010        	ldw	x,#16
+ 205  0071 89            	pushw	x
+ 206  0072 ae500a        	ldw	x,#20490
+ 207  0075 cd0000        	call	_GPIO_Init
+ 209  0078 5b04          	addw	sp,#4
+ 210                     ; 66 	GPIO_Init(GPIOC, GPIO_PIN_5, GPIO_MODE_IN_FL_NO_IT);		// sw2_3
+ 211  007a 5f            	clrw	x
+ 212  007b 89            	pushw	x
+ 213  007c ae0020        	ldw	x,#32
+ 214  007f 89            	pushw	x
+ 215  0080 ae500a        	ldw	x,#20490
+ 216  0083 cd0000        	call	_GPIO_Init
+ 218  0086 5b04          	addw	sp,#4
+ 219                     ; 67 	GPIO_Init(GPIOC, GPIO_PIN_6, GPIO_MODE_IN_FL_NO_IT);		// sw2_2
+ 220  0088 5f            	clrw	x
+ 221  0089 89            	pushw	x
+ 222  008a ae0040        	ldw	x,#64
+ 223  008d 89            	pushw	x
+ 224  008e ae500a        	ldw	x,#20490
+ 225  0091 cd0000        	call	_GPIO_Init
+ 227  0094 5b04          	addw	sp,#4
+ 228                     ; 68 	GPIO_Init(GPIOC, GPIO_PIN_7, GPIO_MODE_IN_FL_NO_IT);				// sw2_1
+ 229  0096 5f            	clrw	x
+ 230  0097 89            	pushw	x
+ 231  0098 ae0080        	ldw	x,#128
+ 232  009b 89            	pushw	x
+ 233  009c ae500a        	ldw	x,#20490
+ 234  009f cd0000        	call	_GPIO_Init
+ 236  00a2 5b04          	addw	sp,#4
+ 237                     ; 69 	GPIO_Init(GPIOC, GPIO_PIN_4, GPIO_MODE_OUT_PP_LOW_SLOW);// pwm sound out (TIM1_CH4)
+ 238  00a4 ae00c0        	ldw	x,#192
+ 239  00a7 89            	pushw	x
+ 240  00a8 ae0010        	ldw	x,#16
+ 241  00ab 89            	pushw	x
+ 242  00ac ae500a        	ldw	x,#20490
+ 243  00af cd0000        	call	_GPIO_Init
+ 245  00b2 5b04          	addw	sp,#4
+ 246                     ; 71 	GPIO_Init(GPIOD, GPIO_PIN_1, GPIO_MODE_IN_FL_NO_IT);		// not used
+ 247  00b4 5f            	clrw	x
+ 248  00b5 89            	pushw	x
+ 249  00b6 ae0002        	ldw	x,#2
+ 250  00b9 89            	pushw	x
+ 251  00ba ae500f        	ldw	x,#20495
+ 252  00bd cd0000        	call	_GPIO_Init
+ 254  00c0 5b04          	addw	sp,#4
+ 255                     ; 72 	GPIO_Init(GPIOD, GPIO_PIN_2, GPIO_MODE_IN_FL_NO_IT);		// not used
+ 256  00c2 5f            	clrw	x
+ 257  00c3 89            	pushw	x
+ 258  00c4 ae0004        	ldw	x,#4
+ 259  00c7 89            	pushw	x
+ 260  00c8 ae500f        	ldw	x,#20495
+ 261  00cb cd0000        	call	_GPIO_Init
+ 263  00ce 5b04          	addw	sp,#4
+ 264                     ; 73 	GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_SLOW);    // out flash
+ 265  00d0 ae00c0        	ldw	x,#192
+ 266  00d3 89            	pushw	x
+ 267  00d4 ae0008        	ldw	x,#8
+ 268  00d7 89            	pushw	x
+ 269  00d8 ae500f        	ldw	x,#20495
+ 270  00db cd0000        	call	_GPIO_Init
+ 272  00de 5b04          	addw	sp,#4
+ 273                     ; 74 	GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_IN_FL_NO_IT);  	// sw1_3
+ 274  00e0 5f            	clrw	x
+ 275  00e1 89            	pushw	x
+ 276  00e2 ae0010        	ldw	x,#16
+ 277  00e5 89            	pushw	x
+ 278  00e6 ae500f        	ldw	x,#20495
+ 279  00e9 cd0000        	call	_GPIO_Init
+ 281  00ec 5b04          	addw	sp,#4
+ 282                     ; 75 	GPIO_Init(GPIOD, GPIO_PIN_5, GPIO_MODE_IN_FL_NO_IT); 		// sw1_2
+ 283  00ee 5f            	clrw	x
+ 284  00ef 89            	pushw	x
+ 285  00f0 ae0020        	ldw	x,#32
+ 286  00f3 89            	pushw	x
+ 287  00f4 ae500f        	ldw	x,#20495
+ 288  00f7 cd0000        	call	_GPIO_Init
+ 290  00fa 5b04          	addw	sp,#4
+ 291                     ; 76 	GPIO_Init(GPIOD, GPIO_PIN_6, GPIO_MODE_IN_FL_NO_IT);		// sw1_1
+ 292  00fc 5f            	clrw	x
+ 293  00fd 89            	pushw	x
+ 294  00fe ae0040        	ldw	x,#64
+ 295  0101 89            	pushw	x
+ 296  0102 ae500f        	ldw	x,#20495
+ 297  0105 cd0000        	call	_GPIO_Init
+ 299  0108 5b04          	addw	sp,#4
+ 300                     ; 77 }
+ 301  010a 81            	ret
+ 303                     ; 79 void TIM1_setup(void)
+ 303                     ; 80 {
+ 304                     .text:	section	.text,new
+ 305  0000               _TIM1_setup:
+ 307                     ; 81 	TIM1_DeInit();
+ 308  0000 cd0000        	call	_TIM1_DeInit
+ 310                     ; 82 	TIM1_TimeBaseInit(TIM1_ICPSC_DIV2,TIM1_COUNTERMODE_UP,8000,0);
+ 311  0003 4b00          	push	#0
+ 312  0005 ae1f40        	ldw	x,#8000
+ 313  0008 89            	pushw	x
+ 314  0009 5f            	clrw	x
+ 315  000a 89            	pushw	x
+ 316  000b ae0004        	ldw	x,#4
+ 317  000e cd0000        	call	_TIM1_TimeBaseInit
+ 319  0011 5b05          	addw	sp,#5
+ 320                     ; 97 	TIM1_SelectOCxM(TIM1_CHANNEL_4, TIM1_OCMODE_PWM2); // OUT2
+ 321  0013 ae0070        	ldw	x,#112
+ 322  0016 89            	pushw	x
+ 323  0017 ae0003        	ldw	x,#3
+ 324  001a cd0000        	call	_TIM1_SelectOCxM
+ 326  001d 85            	popw	x
+ 327                     ; 98 	TIM1_OC4Init(TIM1_OCMODE_PWM2, TIM1_OUTPUTSTATE_ENABLE,0, TIM1_OCPOLARITY_LOW, TIM1_OCIDLESTATE_SET);
+ 328  001e ae0055        	ldw	x,#85
+ 329  0021 89            	pushw	x
+ 330  0022 ae0022        	ldw	x,#34
+ 331  0025 89            	pushw	x
+ 332  0026 5f            	clrw	x
+ 333  0027 89            	pushw	x
+ 334  0028 ae0011        	ldw	x,#17
+ 335  002b 89            	pushw	x
+ 336  002c ae0070        	ldw	x,#112
+ 337  002f cd0000        	call	_TIM1_OC4Init
+ 339  0032 5b08          	addw	sp,#8
+ 340                     ; 99 	TIM1_OC4PreloadConfig(ENABLE);
+ 341  0034 ae0001        	ldw	x,#1
+ 342  0037 cd0000        	call	_TIM1_OC4PreloadConfig
+ 344                     ; 102 	TIM1_ARRPreloadConfig(ENABLE);
+ 345  003a ae0001        	ldw	x,#1
+ 346  003d cd0000        	call	_TIM1_ARRPreloadConfig
+ 348                     ; 103 	TIM1_Cmd(ENABLE);
+ 349  0040 ae0001        	ldw	x,#1
+ 350  0043 cd0000        	call	_TIM1_Cmd
+ 352                     ; 104 	TIM1_CtrlPWMOutputs(ENABLE);
+ 353  0046 ae0001        	ldw	x,#1
+ 354  0049 cd0000        	call	_TIM1_CtrlPWMOutputs
+ 356                     ; 105 }
+ 357  004c 81            	ret
+ 359                     ; 107 void TIM2_setup(void)
+ 359                     ; 108 {
+ 360                     .text:	section	.text,new
+ 361  0000               _TIM2_setup:
+ 363                     ; 109 	TIM2_DeInit();
+ 364  0000 cd0000        	call	_TIM2_DeInit
+ 366                     ; 110 	TIM2_SetCounter(0x00);
+ 367  0003 5f            	clrw	x
+ 368  0004 cd0000        	call	_TIM2_SetCounter
+ 370                     ; 111 	TIM2_TimeBaseInit(TIM2_PRESCALER_256, 625);	// 10ms
+ 371  0007 ae0271        	ldw	x,#625
+ 372  000a 89            	pushw	x
+ 373  000b ae0008        	ldw	x,#8
+ 374  000e cd0000        	call	_TIM2_TimeBaseInit
+ 376  0011 85            	popw	x
+ 377                     ; 112 	TIM2_ITConfig(TIM2_IT_UPDATE,ENABLE);
+ 378  0012 ae0001        	ldw	x,#1
+ 379  0015 89            	pushw	x
+ 380  0016 ae0001        	ldw	x,#1
+ 381  0019 cd0000        	call	_TIM2_ITConfig
+ 383  001c 85            	popw	x
+ 384                     ; 113 	TIM2_Cmd(ENABLE);
+ 385  001d ae0001        	ldw	x,#1
+ 386  0020 cd0000        	call	_TIM2_Cmd
+ 388                     ; 114 }
+ 389  0023 81            	ret
+ 391                     ; 116 void TIM4_setup(void)
+ 391                     ; 117 {
+ 392                     .text:	section	.text,new
+ 393  0000               _TIM4_setup:
+ 395                     ; 118 	TIM4_DeInit();
+ 396  0000 cd0000        	call	_TIM4_DeInit
+ 398                     ; 119 	TIM4_SetCounter(0x00);
+ 399  0003 4f            	clr	a
+ 400  0004 cd0000        	call	_TIM4_SetCounter
+ 402                     ; 120 	TIM4_ClearFlag(TIM4_IT_UPDATE);
+ 403  0007 ae0001        	ldw	x,#1
+ 404  000a cd0000        	call	_TIM4_ClearFlag
+ 406                     ; 121 	TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+ 407  000d ae0001        	ldw	x,#1
+ 408  0010 cd0000        	call	_TIM4_ClearITPendingBit
+ 410                     ; 122 	TIM4_PrescalerConfig(TIM4_PRESCALER_128, TIM4_PSCRELOADMODE_UPDATE);
+ 411  0013 5f            	clrw	x
+ 412  0014 89            	pushw	x
+ 413  0015 ae0007        	ldw	x,#7
+ 414  0018 cd0000        	call	_TIM4_PrescalerConfig
+ 416  001b 85            	popw	x
+ 417                     ; 123 	TIM4_TimeBaseInit(TIM4_PRESCALER_128, 125);
+ 418  001c 4b7d          	push	#125
+ 419  001e ae0007        	ldw	x,#7
+ 420  0021 cd0000        	call	_TIM4_TimeBaseInit
+ 422  0024 84            	pop	a
+ 423                     ; 124 	TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE);
+ 424  0025 ae0001        	ldw	x,#1
+ 425  0028 89            	pushw	x
+ 426  0029 ae0001        	ldw	x,#1
+ 427  002c cd0000        	call	_TIM4_ITConfig
+ 429  002f 85            	popw	x
+ 430                     ; 125 	TIM4_Cmd(ENABLE);
+ 431  0030 ae0001        	ldw	x,#1
+ 432  0033 cd0000        	call	_TIM4_Cmd
+ 434                     ; 126 }
+ 435  0036 81            	ret
+ 437                     ; 128 void init_u_Port(void)
+ 437                     ; 129 {
+ 438                     .text:	section	.text,new
+ 439  0000               _init_u_Port:
+ 441                     ; 130 	GPIO_WriteLow(GPIOA, GPIO_PIN_3);	
+ 442  0000 ae0008        	ldw	x,#8
+ 443  0003 89            	pushw	x
+ 444  0004 ae5000        	ldw	x,#20480
+ 445  0007 cd0000        	call	_GPIO_WriteLow
+ 447  000a 85            	popw	x
+ 448                     ; 131 }
+ 449  000b 81            	ret
+ 451                     ; 133 void setAlternateBit(void)
+ 451                     ; 134 {
+ 452                     .text:	section	.text,new
+ 453  0000               _setAlternateBit:
+ 454  0000 89            	pushw	x
+ 455       00000002      OFST:	set	2
+ 457                     ; 136 		uint16_t stored_data = FLASH_ReadOptionByte(OPTION_BYTE_AFR);
+ 458  0001 ae4803        	ldw	x,#18435
+ 459  0004 cd0000        	call	_FLASH_ReadOptionByte
+ 461  0007 1f01          	ldw	(OFST-1,sp),x
+ 462                     ; 138 		if( ( FLASH_OPTIONBYTE_ERROR == stored_data ) ||
+ 462                     ; 139 			( AFR0 != (uint8_t)( stored_data>>8 ) ) )
+ 463  0009 1e01          	ldw	x,(OFST-1,sp)
+ 464  000b a35555        	cpw	x,#21845
+ 465  000e 2706          	jreq	L31
+ 467  0010 7b01          	ld	a,(OFST-1,sp)
+ 468  0012 a101          	cp	a,#1
+ 469  0014 2721          	jreq	L11
+ 470  0016               L31:
+ 471                     ; 141 				FLASH_Unlock(FLASH_MEMTYPE_DATA);
+ 472  0016 ae00f7        	ldw	x,#247
+ 473  0019 cd0000        	call	_FLASH_Unlock
+ 475                     ; 142 				FLASH_EraseOptionByte(OPTION_BYTE_AFR);
+ 476  001c ae4803        	ldw	x,#18435
+ 477  001f cd0000        	call	_FLASH_EraseOptionByte
+ 479                     ; 143 				FLASH_ProgramOptionByte(OPTION_BYTE_AFR, AFR0);
+ 480  0022 4b01          	push	#1
+ 481  0024 ae4803        	ldw	x,#18435
+ 482  0027 cd0000        	call	_FLASH_ProgramOptionByte
+ 484  002a 84            	pop	a
+ 485                     ; 144 				FLASH_Lock(FLASH_MEMTYPE_DATA);
+ 486  002b ae00f7        	ldw	x,#247
+ 487  002e cd0000        	call	_FLASH_Lock
+ 489                     ; 147 				IWDG->KR = IWDG_KEY_ENABLE;
+ 490  0031 35cc50e0      	mov	20704,#204
+ 491  0035               L51:
+ 492                     ; 148 				while(1);
+ 493  0035 20fe          	jra	L51
+ 494  0037               L11:
+ 495                     ; 150 }
+ 496  0037 85            	popw	x
+ 497  0038 81            	ret
+ 499                     ; 152 uint16_t readADC1(uint16_t channel) 
+ 499                     ; 153 {
+ 500                     .text:	section	.text,new
+ 501  0000               _readADC1:
+ 502  0000 89            	pushw	x
+ 503  0001 89            	pushw	x
+ 504       00000002      OFST:	set	2
+ 506                     ; 154      uint16_t val=0;
+ 507  0002 5f            	clrw	x
+ 508  0003 1f01          	ldw	(OFST-1,sp),x
+ 509                     ; 156      ADC1->CSR |= ((0x0F)&channel); // select channel
+ 510  0005 7b04          	ld	a,(OFST+2,sp)
+ 511  0007 a40f          	and	a,#15
+ 512  0009 ca5400        	or	a,21504
+ 513  000c c75400        	ld	21504,a
+ 514                     ; 157      ADC1->CR2 |= (1<<3); // Right Aligned Data
+ 515  000f 72165402      	bset	21506,#3
+ 516                     ; 158      ADC1->CR1 |= (1<<0); // ADC ON 
+ 517  0013 72105401      	bset	21505,#0
+ 518                     ; 159      ADC1->CR1 |= (1<<0); // ADC Start Conversion
+ 519  0017 72105401      	bset	21505,#0
+ 521  001b               L32:
+ 522                     ; 160      while(((ADC1->CSR)&(1<<7))== 0); // Wait till EOC
+ 523  001b c65400        	ld	a,21504
+ 524  001e a580          	bcp	a,#128
+ 525  0020 27f9          	jreq	L32
+ 526                     ; 161      val |= (uint16_t)ADC1->DRL;
+ 527  0022 c65405        	ld	a,21509
+ 528  0025 5f            	clrw	x
+ 529  0026 97            	ld	xl,a
+ 530  0027 01            	rrwa	x,a
+ 531  0028 1a02          	or	a,(OFST+0,sp)
+ 532  002a 01            	rrwa	x,a
+ 533  002b 1a01          	or	a,(OFST-1,sp)
+ 534  002d 01            	rrwa	x,a
+ 535  002e 1f01          	ldw	(OFST-1,sp),x
+ 536                     ; 162      val |= (uint16_t)ADC1->DRH<<8;
+ 537  0030 c65404        	ld	a,21508
+ 538  0033 5f            	clrw	x
+ 539  0034 97            	ld	xl,a
+ 540  0035 4f            	clr	a
+ 541  0036 02            	rlwa	x,a
+ 542  0037 01            	rrwa	x,a
+ 543  0038 1a02          	or	a,(OFST+0,sp)
+ 544  003a 01            	rrwa	x,a
+ 545  003b 1a01          	or	a,(OFST-1,sp)
+ 546  003d 01            	rrwa	x,a
+ 547  003e 1f01          	ldw	(OFST-1,sp),x
+ 548                     ; 163      ADC1->CR1 &= ~(1<<0); // ADC Stop Conversion
+ 549  0040 72115401      	bres	21505,#0
+ 550                     ; 164      val &= 0x03ff;
+ 551  0044 7b01          	ld	a,(OFST-1,sp)
+ 552  0046 a403          	and	a,#3
+ 553  0048 6b01          	ld	(OFST-1,sp),a
+ 554                     ; 165      return (val);
+ 555  004a 1e01          	ldw	x,(OFST-1,sp)
+ 557  004c 5b04          	addw	sp,#4
+ 558  004e 81            	ret
+ 560                     ; 168 void ADC_setup(uint8_t ch_sel)
+ 560                     ; 169 {
+ 561                     .text:	section	.text,new
+ 562  0000               _ADC_setup:
+ 563  0000 88            	push	a
+ 564       00000000      OFST:	set	0
+ 566                     ; 170 	ADC1_DeInit();	
+ 567  0001 cd0000        	call	_ADC1_DeInit
+ 569                     ; 172 	ADC1_Init(ADC1_CONVERSIONMODE_SINGLE,
+ 569                     ; 173 						ch_sel,
+ 569                     ; 174 						ADC1_PRESSEL_FCPU_D4,
+ 569                     ; 175 						ADC1_EXTTRIG_GPIO,
+ 569                     ; 176 						DISABLE,
+ 569                     ; 177 						ADC1_ALIGN_RIGHT,
+ 569                     ; 178 						ch_sel,
+ 569                     ; 179 						DISABLE);
+ 570  0004 5f            	clrw	x
+ 571  0005 89            	pushw	x
+ 572  0006 7b03          	ld	a,(OFST+3,sp)
+ 573  0008 5f            	clrw	x
+ 574  0009 97            	ld	xl,a
+ 575  000a 89            	pushw	x
+ 576  000b ae0008        	ldw	x,#8
+ 577  000e 89            	pushw	x
+ 578  000f 5f            	clrw	x
+ 579  0010 89            	pushw	x
+ 580  0011 ae0010        	ldw	x,#16
+ 581  0014 89            	pushw	x
+ 582  0015 ae0020        	ldw	x,#32
+ 583  0018 89            	pushw	x
+ 584  0019 7b0d          	ld	a,(OFST+13,sp)
+ 585  001b 5f            	clrw	x
+ 586  001c 97            	ld	xl,a
+ 587  001d 89            	pushw	x
+ 588  001e 5f            	clrw	x
+ 589  001f cd0000        	call	_ADC1_Init
+ 591  0022 5b0e          	addw	sp,#14
+ 592                     ; 181 	ADC1_ITConfig(ADC1_IT_EOCIE, ENABLE);
+ 593  0024 ae0001        	ldw	x,#1
+ 594  0027 89            	pushw	x
+ 595  0028 ae0020        	ldw	x,#32
+ 596  002b cd0000        	call	_ADC1_ITConfig
+ 598  002e 85            	popw	x
+ 599                     ; 198 }
+ 600  002f 84            	pop	a
+ 601  0030 81            	ret
+ 603                     ; 200 void Read_Protect_Flash(void)
+ 603                     ; 201 {
+ 604                     .text:	section	.text,new
+ 605  0000               _Read_Protect_Flash:
+ 607                     ; 202     FLASH_SetProgrammingTime(FLASH_PROGRAMTIME_STANDARD);
+ 608  0000 5f            	clrw	x
+ 609  0001 cd0000        	call	_FLASH_SetProgrammingTime
+ 612  0004 201b          	jra	L13
+ 613  0006               L72:
+ 614                     ; 205         FLASH_Unlock(FLASH_MEMTYPE_DATA);
+ 615  0006 ae00f7        	ldw	x,#247
+ 616  0009 cd0000        	call	_FLASH_Unlock
+ 618                     ; 207         FLASH_EraseOptionByte(0x4800);
+ 619  000c ae4800        	ldw	x,#18432
+ 620  000f cd0000        	call	_FLASH_EraseOptionByte
+ 622                     ; 208         FLASH_ProgramOptionByte(0x4800, 0xAA);
+ 623  0012 4baa          	push	#170
+ 624  0014 ae4800        	ldw	x,#18432
+ 625  0017 cd0000        	call	_FLASH_ProgramOptionByte
+ 627  001a 84            	pop	a
+ 628                     ; 210         FLASH_Lock(FLASH_MEMTYPE_DATA);
+ 629  001b ae00f7        	ldw	x,#247
+ 630  001e cd0000        	call	_FLASH_Lock
+ 632  0021               L13:
+ 633                     ; 203     while(FLASH_ReadOptionByte(0x4800) != 0xAA)
+ 634  0021 ae4800        	ldw	x,#18432
+ 635  0024 cd0000        	call	_FLASH_ReadOptionByte
+ 637  0027 a300aa        	cpw	x,#170
+ 638  002a 26da          	jrne	L72
+ 639                     ; 212 }
+ 640  002c 81            	ret
+ 642                     ; 223 void assert_failed(uint8_t* file, uint32_t line)
+ 642                     ; 224 { 
+ 643                     .text:	section	.text,new
+ 644  0000               _assert_failed:
+ 646  0000               L53:
+ 647  0000 20fe          	jra	L53
+ 649                     	xdef	_ADC_setup
+ 650                     	xdef	_readADC1
+ 651                     	xdef	_Read_Protect_Flash
+ 652                     	xdef	_setAlternateBit
+ 653                     	xdef	_init_u_Port
+ 654                     	xdef	_GPIO_setup
+ 655                     	xdef	_clock_setup
+ 656                     	xdef	_TIM4_setup
+ 657                     	xdef	_TIM2_setup
+ 658                     	xdef	_TIM1_setup
+ 659                     	xdef	_assert_failed
+ 660                     	xref	_TIM4_ClearITPendingBit
+ 661                     	xref	_TIM4_ClearFlag
+ 662                     	xref	_TIM4_SetCounter
+ 663                     	xref	_TIM4_PrescalerConfig
+ 664                     	xref	_TIM4_ITConfig
+ 665                     	xref	_TIM4_Cmd
+ 666                     	xref	_TIM4_TimeBaseInit
+ 667                     	xref	_TIM4_DeInit
+ 668                     	xref	_TIM2_SetCounter
+ 669                     	xref	_TIM2_ITConfig
+ 670                     	xref	_TIM2_Cmd
+ 671                     	xref	_TIM2_TimeBaseInit
+ 672                     	xref	_TIM2_DeInit
+ 673                     	xref	_TIM1_SelectOCxM
+ 674                     	xref	_TIM1_OC4PreloadConfig
+ 675                     	xref	_TIM1_ARRPreloadConfig
+ 676                     	xref	_TIM1_CtrlPWMOutputs
+ 677                     	xref	_TIM1_Cmd
+ 678                     	xref	_TIM1_OC4Init
+ 679                     	xref	_TIM1_TimeBaseInit
+ 680                     	xref	_TIM1_DeInit
+ 681                     	xref	_GPIO_WriteLow
+ 682                     	xref	_GPIO_Init
+ 683                     	xref	_GPIO_DeInit
+ 684                     	xref	_FLASH_SetProgrammingTime
+ 685                     	xref	_FLASH_EraseOptionByte
+ 686                     	xref	_FLASH_ProgramOptionByte
+ 687                     	xref	_FLASH_ReadOptionByte
+ 688                     	xref	_FLASH_Lock
+ 689                     	xref	_FLASH_Unlock
+ 690                     	xref	_CLK_GetFlagStatus
+ 691                     	xref	_CLK_SYSCLKConfig
+ 692                     	xref	_CLK_HSIPrescalerConfig
+ 693                     	xref	_CLK_ClockSwitchConfig
+ 694                     	xref	_CLK_PeripheralClockConfig
+ 695                     	xref	_CLK_ClockSwitchCmd
+ 696                     	xref	_CLK_LSICmd
+ 697                     	xref	_CLK_HSICmd
+ 698                     	xref	_CLK_HSECmd
+ 699                     	xref	_CLK_DeInit
+ 700                     	xref	_ADC1_ITConfig
+ 701                     	xref	_ADC1_Init
+ 702                     	xref	_ADC1_DeInit
+ 703                     	end

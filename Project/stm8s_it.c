@@ -301,21 +301,14 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
 		 Value_in_seconds)/8e-6 with prescaler 128
   */
 	
-//	if( (S1_enable) || (S2_enable) )
-//		{
-//			if (SndDip != SndDipOld)
-//			{
-//				casecnt=0;
-//			}			
+	if( (S1_enable) || (S2_enable) )
+		{	
 			soundStone(SndDip);
-//			SndDipOld = SndDip;
-//		}
-//		else
-//		{   
-//			casecnt  = 0;
-//			TIM1_SetAutoreload(1);
-//			TIM1_SetCompare4(0);
-//		}
+		}
+	else
+		{
+			soundStone(10);
+		}
 
 
 	TIM2_ClearITPendingBit(TIM2_FLAG_UPDATE);

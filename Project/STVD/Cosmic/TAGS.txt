@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ABP1	..\..\sound.h	20;"	macro
+ABP1	..\..\sound.h	19;"	macro
 ADC1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2602;"	macro
 ADC1_ALIGN_LEFT	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_adc1.h	70;"	enumerator	enum:__anon16
 ADC1_ALIGN_RIGHT	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_adc1.h	71;"	enumerator	enum:__anon16
@@ -171,10 +171,10 @@ ADC2_TDRH_RESET_VALUE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	405;
 ADC2_TDRL_RESET_VALUE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	404;"	macro
 ADC2_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	396;"	typedef	typeref:struct:ADC2_struct
 ADC2_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	385;"	struct
-ADC_setup	..\..\init.c	176;"	function	signature:(uint8_t ch_sel)
-ADC_setup	..\..\init.h	45;"	prototype	signature:(uint8_t ch_sel)
-AFR0	..\..\init.h	30;"	macro
-AFR0	..\..\main.h	49;"	macro
+ADC_setup	..\..\init.c	168;"	function	signature:(uint8_t ch_sel)
+ADC_setup	..\..\init.h	43;"	prototype	signature:(uint8_t ch_sel)
+AFR0	..\..\init.h	28;"	macro
+AFR0	..\..\main.h	35;"	macro
 APR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	438;"	member	struct:AWU_struct
 AREA	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2818;"	macro
 ARR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1065;"	member	struct:TIM4_struct
@@ -187,7 +187,7 @@ ARRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1134;"	member	struct:
 ARRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	628;"	member	struct:TIM1_struct
 ARRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	839;"	member	struct:TIM2_struct
 ARRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	961;"	member	struct:TIM3_struct
-ASnd	..\..\stm8s_it.c	51;"	variable
+ASnd	..\..\stm8s_it.c	59;"	variable
 AWCRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	330;"	member	struct:ADC1_struct
 AWCRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	331;"	member	struct:ADC1_struct
 AWSRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	328;"	member	struct:ADC1_struct
@@ -248,7 +248,7 @@ BEEP_LSICalibrationConfig	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_be
 BEEP_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	479;"	typedef	typeref:struct:BEEP_struct
 BEEP_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	475;"	struct
 BKR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	638;"	member	struct:TIM1_struct
-BPM	..\..\sound.h	41;"	macro
+BPM	..\..\sound.h	40;"	macro
 BRR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1766;"	member	struct:UART1_struct
 BRR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1864;"	member	struct:UART2_struct
 BRR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1971;"	member	struct:UART3_struct
@@ -257,7 +257,7 @@ BRR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1767;"	member	struct:
 BRR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1865;"	member	struct:UART2_struct
 BRR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1972;"	member	struct:UART3_struct
 BRR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2064;"	member	struct:UART4_struct
-BSnd	..\..\stm8s_it.c	51;"	variable
+BSnd	..\..\stm8s_it.c	59;"	variable
 BTR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2292;"	member	struct:__anon5::__anon6::__anon12
 BTR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2293;"	member	struct:__anon5::__anon6::__anon12
 BYTE_0	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2799;"	macro
@@ -461,9 +461,6 @@ CFG_GCR_RESET_VALUE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2527;"
 CFG_GCR_SWD	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2537;"	macro
 CFG_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2521;"	typedef	typeref:struct:CFG_struct
 CFG_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2517;"	struct
-CHGCOL	..\..\main.h	35;"	macro
-CHGFUN	..\..\main.h	36;"	macro
-CHGINT	..\..\main.h	34;"	macro
 CKDIVR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	511;"	member	struct:CLK_struct
 CLK	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2618;"	macro
 CLKPrescTable	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_clk.c	49;"	variable
@@ -652,7 +649,6 @@ CLK_TIMEOUT	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_clk.h	212;"	macr
 CLK_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	520;"	typedef	typeref:struct:CLK_struct
 CLK_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	503;"	struct
 CMSR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	508;"	member	struct:CLK_struct
-CNT	..\..\main.h	33;"	macro
 CNTR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1063;"	member	struct:TIM4_struct
 CNTR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1263;"	member	struct:TIM6_struct
 CNTRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1130;"	member	struct:TIM5_struct
@@ -749,9 +745,9 @@ DGR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2177;"	member	struct:_
 DISABLE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	234;"	enumerator	enum:__anon3
 DM	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2703;"	macro
 DM_BaseAddress	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2590;"	macro
-DO4	..\..\sound.h	24;"	macro
-DOd4	..\..\sound.h	25;"	macro
-DQ	..\..\sound.h	45;"	macro
+DO4	..\..\sound.h	23;"	macro
+DOd4	..\..\sound.h	24;"	macro
+DQ	..\..\sound.h	44;"	macro
 DR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1331;"	member	struct:I2C_struct
 DR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1697;"	member	struct:SPI_struct
 DR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1765;"	member	struct:UART1_struct
@@ -777,7 +773,7 @@ EGR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	829;"	member	struct:TI
 EGR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	953;"	member	struct:TIM3_struct
 EIER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2289;"	member	struct:__anon5::__anon6::__anon12
 ENABLE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	234;"	enumerator	enum:__anon3
-END	..\..\sound.h	38;"	macro
+END	..\..\sound.h	37;"	macro
 ERROR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	237;"	enumerator	enum:__anon4
 ESR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2288;"	member	struct:__anon5::__anon6::__anon12
 ETR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	612;"	member	struct:TIM1_struct
@@ -872,12 +868,12 @@ F5R5	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2280;"	member	struct:
 F5R6	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2281;"	member	struct:__anon5::__anon6::__anon11
 F5R7	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2282;"	member	struct:__anon5::__anon6::__anon11
 F5R8	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2283;"	member	struct:__anon5::__anon6::__anon11
-FA4	..\..\sound.h	29;"	macro
+FA4	..\..\sound.h	28;"	macro
 FALSE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	230;"	enumerator	enum:__anon1
 FAR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	121;"	macro
 FAR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	127;"	macro
 FAR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	141;"	macro
-FAd4	..\..\sound.h	30;"	macro
+FAd4	..\..\sound.h	29;"	macro
 FCR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2297;"	member	struct:__anon5::__anon6::__anon12
 FCR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2298;"	member	struct:__anon5::__anon6::__anon12
 FCR3	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2299;"	member	struct:__anon5::__anon6::__anon12
@@ -1017,7 +1013,6 @@ FR14	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2218;"	member	struct:
 FR15	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2219;"	member	struct:__anon5::__anon6::__anon8
 FR16	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2220;"	member	struct:__anon5::__anon6::__anon8
 FREQR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1327;"	member	struct:I2C_struct
-FREQUENZA_MASTER	..\..\main.h	27;"	macro
 Filter	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2221;"	member	union:__anon5::__anon6	typeref:struct:__anon5::__anon6::__anon8
 Filter01	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2242;"	member	union:__anon5::__anon6	typeref:struct:__anon5::__anon6::__anon9
 Filter23	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2263;"	member	union:__anon5::__anon6	typeref:struct:__anon5::__anon6::__anon10
@@ -1093,8 +1088,8 @@ GPIO_WriteLow	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_gpio.h	143;"	p
 GPIO_WriteLow	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_gpio.c	167;"	function	signature:(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
 GPIO_WriteReverse	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_gpio.h	144;"	prototype	signature:(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
 GPIO_WriteReverse	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_gpio.c	180;"	function	signature:(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
-GPIO_setup	..\..\init.c	41;"	function	signature:(void)
-GPIO_setup	..\..\init.h	39;"	prototype	signature:(void)
+GPIO_setup	..\..\init.c	39;"	function	signature:(void)
+GPIO_setup	..\..\init.h	37;"	prototype	signature:(void)
 GPIO_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	264;"	struct
 GTR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1773;"	member	struct:UART1_struct
 GTR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1872;"	member	struct:UART2_struct
@@ -1261,8 +1256,6 @@ IER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2176;"	member	struct:_
 IER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	613;"	member	struct:TIM1_struct
 IER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	826;"	member	struct:TIM2_struct
 IER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	950;"	member	struct:TIM3_struct
-INDIRIZZO_MEMORIA	..\..\init.h	28;"	macro
-INDIRIZZO_MEMORIA	..\..\main.h	47;"	macro
 INTERRUPT	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2769;"	macro
 INTERRUPT	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2771;"	macro
 INTERRUPT_HANDLER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2747;"	macro
@@ -1271,7 +1264,7 @@ INTERRUPT_HANDLER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2759;"	m
 INTERRUPT_HANDLER_TRAP	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2748;"	macro
 INTERRUPT_HANDLER_TRAP	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2753;"	macro
 INTERRUPT_HANDLER_TRAP	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2762;"	macro
-INTERRUPT_HANDLER_TRAP	..\..\stm8s_it.c	77;"	function
+INTERRUPT_HANDLER_TRAP	..\..\stm8s_it.c	85;"	function
 IN_RAM	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	170;"	macro
 IN_RAM	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	172;"	macro
 IN_RAM	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	174;"	macro
@@ -1530,8 +1523,8 @@ IWDG_WriteAccess_Enable	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_iwdg
 IWDG_WriteAccess_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_iwdg.h	92;"	typedef	typeref:enum:__anon43
 IWDG_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1604;"	struct
 KR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1606;"	member	struct:IWDG_struct
-LA4	..\..\sound.h	33;"	macro
-LAd4	..\..\sound.h	34;"	macro
+LA4	..\..\sound.h	32;"	macro
+LAd4	..\..\sound.h	33;"	macro
 LSI_FREQUENCY_MAX	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_awu.h	77;"	macro
 LSI_FREQUENCY_MAX	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_beep.h	64;"	macro
 LSI_FREQUENCY_MIN	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_awu.h	76;"	macro
@@ -1559,11 +1552,11 @@ MDAR8	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2197;"	member	struct
 MDAR8	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2318;"	member	struct:__anon5::__anon6::__anon13
 MDLCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2185;"	member	struct:__anon5::__anon6::__anon7
 MDLCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2306;"	member	struct:__anon5::__anon6::__anon13
-MEMCFG	..\..\main.h	38;"	macro
+MEMCFG	..\..\main.h	29;"	macro
 MEMCPY	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	135;"	macro
 MEMCPY	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	138;"	macro
 MFMI	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2305;"	member	struct:__anon5::__anon6::__anon13
-MI4	..\..\sound.h	28;"	macro
+MI4	..\..\sound.h	27;"	macro
 MIDR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2186;"	member	struct:__anon5::__anon6::__anon7
 MIDR1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2307;"	member	struct:__anon5::__anon6::__anon13
 MIDR2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2187;"	member	struct:__anon5::__anon6::__anon7
@@ -1572,13 +1565,13 @@ MIDR3	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2188;"	member	struct
 MIDR3	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2309;"	member	struct:__anon5::__anon6::__anon13
 MIDR4	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2189;"	member	struct:__anon5::__anon6::__anon7
 MIDR4	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2310;"	member	struct:__anon5::__anon6::__anon13
-MINUTE	..\..\sound.h	42;"	macro
+MINUTE	..\..\sound.h	41;"	macro
 MSR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2172;"	member	struct:__anon5
 MTSRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2199;"	member	struct:__anon5::__anon6::__anon7
 MTSRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2320;"	member	struct:__anon5::__anon6::__anon13
 MTSRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2198;"	member	struct:__anon5::__anon6::__anon7
 MTSRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2319;"	member	struct:__anon5::__anon6::__anon13
-MUTE	..\..\sound.h	39;"	macro
+MUTE	..\..\sound.h	38;"	macro
 MemoryAddressCast	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	156;"	macro
 MemoryAddressCast	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	160;"	macro
 MskBit	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2795;"	macro
@@ -1607,8 +1600,8 @@ OPT3	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1586;"	member	struct:
 OPT4	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1588;"	member	struct:OPT_struct
 OPT5	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1590;"	member	struct:OPT_struct
 OPT7	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1594;"	member	struct:OPT_struct
-OPTION_BYTE_AFR	..\..\init.h	29;"	macro
-OPTION_BYTE_AFR	..\..\main.h	48;"	macro
+OPTION_BYTE_AFR	..\..\init.h	27;"	macro
+OPTION_BYTE_AFR	..\..\main.h	34;"	macro
 OPTION_BYTE_END_PHYSICAL_ADDRESS	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_flash.h	74;"	macro
 OPTION_BYTE_START_PHYSICAL_ADDRESS	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_flash.h	73;"	macro
 OPT_BaseAddress	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2555;"	macro
@@ -1629,15 +1622,14 @@ PSCRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	625;"	member	struct:
 PSCRL	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	626;"	member	struct:TIM1_struct
 PSR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2178;"	member	struct:__anon5
 PUKR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1519;"	member	struct:FLASH_struct
-PWM_CLK	..\..\sound.h	21;"	macro
-PWMfreq	..\..\main.h	29;"	macro
+PWM_CLK	..\..\sound.h	20;"	macro
 Page	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2322;"	member	struct:__anon5	typeref:union:__anon5::__anon6
 PointerAttr	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	155;"	macro
 PointerAttr	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	159;"	macro
-QQ	..\..\sound.h	44;"	macro
-RAW_Data	..\..\main.c	43;"	variable
+QQ	..\..\sound.h	43;"	macro
+RAW_Data	..\..\main.c	26;"	variable
 RCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	629;"	member	struct:TIM1_struct
-RE4	..\..\sound.h	26;"	macro
+RE4	..\..\sound.h	25;"	macro
 RECR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2291;"	member	struct:__anon5::__anon6::__anon12
 RESERVED	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1977;"	member	struct:UART3_struct
 RESERVED	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	315;"	member	struct:ADC1_struct
@@ -1656,7 +1648,7 @@ RESERVED2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1593;"	member	st
 RESERVED2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	824;"	member	struct:TIM2_struct
 RESERVED3	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1520;"	member	struct:FLASH_struct
 RESET	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	232;"	enumerator	enum:__anon2
-REd4	..\..\sound.h	27;"	macro
+REd4	..\..\sound.h	26;"	macro
 RFR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2175;"	member	struct:__anon5
 RLR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1608;"	member	struct:IWDG_struct
 RST	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2649;"	macro
@@ -1678,39 +1670,37 @@ RST_SR_SWIMF	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1677;"	macro
 RST_SR_WWDGF	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1680;"	macro
 RST_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1670;"	typedef	typeref:struct:RST_struct
 RST_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1666;"	struct
-RUN	..\..\main.h	44;"	macro
+RUN	..\..\main.h	31;"	macro
 RXCRCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1699;"	member	struct:SPI_struct
-Read_Protect_Flash	..\..\init.c	208;"	function	signature:(void)
-Read_Protect_Flash	..\..\init.h	43;"	prototype	signature:(void)
+Read_Protect_Flash	..\..\init.c	200;"	function	signature:(void)
+Read_Protect_Flash	..\..\init.h	41;"	prototype	signature:(void)
 Reserved1	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2294;"	member	struct:__anon5::__anon6::__anon12
 Reserved2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2300;"	member	struct:__anon5::__anon6::__anon12
 RxFIFO	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2321;"	member	union:__anon5::__anon6	typeref:struct:__anon5::__anon6::__anon13
-S1	..\..\utils.c	32;"	variable
+S1	..\..\utils.c	30;"	variable
 S16_MAX	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	243;"	macro
 S16_MIN	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	244;"	macro
-S1_DIP	..\..\main.h	51;"	macro
+S1_DIP	..\..\main.h	37;"	macro
 S1_IN	..\..\utils.c	34;"	variable
-S1_enable	..\..\main.c	36;"	variable
-S2	..\..\utils.c	33;"	variable
-S2_DIP	..\..\main.h	52;"	macro
+S1_enable	..\..\main.c	20;"	variable
+S2	..\..\utils.c	31;"	variable
+S2_DIP	..\..\main.h	38;"	macro
 S2_IN	..\..\utils.c	35;"	variable
-S2_enable	..\..\main.c	37;"	variable
+S2_enable	..\..\main.c	21;"	variable
+S3	..\..\utils.c	32;"	variable
 S32_MAX	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	246;"	macro
 S32_MIN	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	247;"	macro
+S3_IN	..\..\utils.c	36;"	variable
 S8_MAX	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	240;"	macro
 S8_MIN	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	241;"	macro
-SELCFG	..\..\main.h	40;"	macro
-SEL_LED_TYPE	..\..\main.h	39;"	macro
+SELCFG	..\..\main.h	30;"	macro
 SET	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	232;"	enumerator	enum:__anon2
-SETMEMCFG1	..\..\main.h	41;"	macro
-SETMEMCFG2	..\..\main.h	42;"	macro
-SETMEMCFG3	..\..\main.h	43;"	macro
-SI4	..\..\sound.h	35;"	macro
+SI4	..\..\sound.h	34;"	macro
 SMCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1120;"	member	struct:TIM5_struct
 SMCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1259;"	member	struct:TIM6_struct
 SMCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	611;"	member	struct:TIM1_struct
-SOL4	..\..\sound.h	31;"	macro
-SOLd4	..\..\sound.h	32;"	macro
+SOL4	..\..\sound.h	30;"	macro
+SOLd4	..\..\sound.h	31;"	macro
 SPI	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2654;"	macro
 SPI_BAUDRATEPRESCALER_128	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_spi.h	94;"	enumerator	enum:__anon116
 SPI_BAUDRATEPRESCALER_16	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_spi.h	91;"	enumerator	enum:__anon116
@@ -1842,8 +1832,8 @@ SWCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	510;"	member	struct:C
 SWIMCCR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	518;"	member	struct:CLK_struct
 SWR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	509;"	member	struct:CLK_struct
 SetBit	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2788;"	macro
-SndDip	..\..\main.c	39;"	variable
-SndDipOld	..\..\stm8s_it.c	48;"	variable
+SndDip	..\..\main.c	23;"	variable
+SndDipOld	..\..\stm8s_it.c	56;"	variable
 TBR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	439;"	member	struct:AWU_struct
 TDRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	322;"	member	struct:ADC1_struct
 TDRH	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	393;"	member	struct:ADC2_struct
@@ -2289,8 +2279,8 @@ TIM1_UpdateDisableConfig	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_tim
 TIM1_UpdateRequestConfig	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim1.h	554;"	prototype	signature:(TIM1_UpdateSource_TypeDef TIM1_UpdateSource)
 TIM1_UpdateRequestConfig	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_tim1.c	827;"	function	signature:(TIM1_UpdateSource_TypeDef TIM1_UpdateSource)
 TIM1_UpdateSource_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim1.h	402;"	typedef	typeref:enum:__anon72
-TIM1_setup	..\..\init.c	82;"	function	signature:(void)
-TIM1_setup	..\..\init.h	35;"	prototype	signature:(void)
+TIM1_setup	..\..\init.c	79;"	function	signature:(void)
+TIM1_setup	..\..\init.h	33;"	prototype	signature:(void)
 TIM1_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	607;"	struct
 TIM2	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2680;"	macro
 TIM2_ARRH_ARR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	927;"	macro
@@ -2524,8 +2514,8 @@ TIM2_UpdateDisableConfig	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_tim
 TIM2_UpdateRequestConfig	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim2.h	296;"	prototype	signature:(TIM2_UpdateSource_TypeDef TIM2_UpdateSource)
 TIM2_UpdateRequestConfig	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_tim2.c	416;"	function	signature:(TIM2_UpdateSource_TypeDef TIM2_UpdateSource)
 TIM2_UpdateSource_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim2.h	246;"	typedef	typeref:enum:__anon90
-TIM2_setup	..\..\init.c	110;"	function	signature:(void)
-TIM2_setup	..\..\init.h	36;"	prototype	signature:(void)
+TIM2_setup	..\..\init.c	107;"	function	signature:(void)
+TIM2_setup	..\..\init.h	34;"	prototype	signature:(void)
 TIM2_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	819;"	struct
 TIM3	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2685;"	macro
 TIM3_ARRH_ARR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1036;"	macro
@@ -2666,8 +2656,8 @@ TIM4_UpdateDisableConfig	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_tim
 TIM4_UpdateRequestConfig	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim4.h	143;"	prototype	signature:(TIM4_UpdateSource_TypeDef TIM4_UpdateSource)
 TIM4_UpdateRequestConfig	..\..\..\libraries\stm8s_stdperiph_driver\src\stm8s_tim4.c	155;"	function	signature:(TIM4_UpdateSource_TypeDef TIM4_UpdateSource)
 TIM4_UpdateSource_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim4.h	94;"	typedef	typeref:enum:__anon95
-TIM4_setup	..\..\init.c	119;"	function	signature:(void)
-TIM4_setup	..\..\init.h	37;"	prototype	signature:(void)
+TIM4_setup	..\..\init.c	116;"	function	signature:(void)
+TIM4_setup	..\..\init.h	35;"	prototype	signature:(void)
 TIM4_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1053;"	struct
 TIM5	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2695;"	macro
 TIM5_ARRH_ARR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1233;"	macro
@@ -3115,17 +3105,16 @@ UART4_SR_TC	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2101;"	macro
 UART4_SR_TXE	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2100;"	macro
 UART4_TypeDef	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2074;"	typedef	typeref:struct:UART4_struct
 UART4_struct	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2059;"	struct
-UO	..\..\sound.h	47;"	macro
-UQ	..\..\sound.h	46;"	macro
+UO	..\..\sound.h	46;"	macro
+UQ	..\..\sound.h	45;"	macro
 USE_FULL_ASSERT	..\..\stm8s_conf.h	90;"	macro
 USE_STDPERIPH_DRIVER	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	95;"	macro
-UpdateTask	..\..\utils.c	88;"	function	signature:(void)
+UpdateTask	..\..\utils.c	94;"	function	signature:(void)
 UpdateTask	..\..\utils.h	38;"	prototype	signature:(void)
 VECTOR_ID	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2758;"	macro
-VG	..\..\utils.c	28;"	variable
-VR	..\..\utils.c	27;"	variable
+VG	..\..\utils.c	26;"	variable
+VR	..\..\utils.c	25;"	variable
 ValBit	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2797;"	macro
-WAIT	..\..\main.h	32;"	macro
 WR	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	1631;"	member	struct:WWDG_struct
 WWDG	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2651;"	macro
 WWDG_BaseAddress	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2569;"	macro
@@ -3147,12 +3136,12 @@ _COSMIC_	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	82;"	macro
 _IAR_	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	86;"	macro
 _RAISONANCE_	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	84;"	macro
 __I	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	205;"	macro
-__INIT_H__	..\..\init.h	11;"	macro
+__INIT_H__	..\..\init.h	10;"	macro
 __IO	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	207;"	macro
 __MAIN_H	..\..\main.h	22;"	macro
-__MODS0__	..\..\..\..\..\..\..\program files (x86)\cosmic\cxstm8_eval\hstm8\mods0.h	11;"	macro
+__MODSL0__	..\..\..\..\..\program files (x86)\cosmic\cxstm8_eval\hstm8\modsl0.h	8;"	macro
 __O	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	206;"	macro
-__SOUND_H__	..\..\sound.h	12;"	macro
+__SOUND_H__	..\..\sound.h	11;"	macro
 __STM8S_ADC1_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_adc1.h	29;"	macro
 __STM8S_AWU_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_awu.h	30;"	macro
 __STM8S_BEEP_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_beep.h	31;"	macro
@@ -3178,55 +3167,49 @@ __STM8S_TIM2_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim2.h	30;"	m
 __STM8S_TIM4_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_tim4.h	30;"	macro
 __STM8S_UART1_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_uart1.h	30;"	macro
 __STM8S_WWDG_H	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s_wwdg.h	30;"	macro
-__UTILS_H__	..\..\utils.h	11;"	macro
+__UTILS_H__	..\..\utils.h	10;"	macro
 _stext	..\..\stm8s_it.h	42;"	prototype	signature:(void)
 _vectab	stm8_interrupt_vector.c	14;"	variable
-assert_failed	..\..\init.c	231;"	function	signature:(uint8_t* file, uint32_t line)
+assert_failed	..\..\init.c	223;"	function	signature:(uint8_t* file, uint32_t line)
 assert_failed	..\..\stm8s_conf.h	105;"	prototype	signature:(uint8_t* file, uint32_t line)
 assert_param	..\..\stm8s_conf.h	103;"	macro
 assert_param	..\..\stm8s_conf.h	107;"	macro
-audio_test	..\..\sound.h	64;"	prototype	signature:(void)
-birthday_song	..\..\sound.c	35;"	variable
-blink	..\..\utils.c	31;"	variable
+audio_test	..\..\sound.h	63;"	prototype	signature:(void)
+birthday_song	..\..\sound.c	26;"	variable
+blink	..\..\utils.c	29;"	variable
 bool	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	230;"	typedef	typeref:enum:__anon1
-caseCnt	..\..\sound.c	21;"	variable
-cct	..\..\sound.c	19;"	variable
-clock_setup	..\..\init.c	12;"	function	signature:(void)
-clock_setup	..\..\init.h	38;"	prototype	signature:(void)
-cnt	..\..\sound.c	24;"	variable
-cntCheck	..\..\main.c	33;"	variable
-count	..\..\stm8s_it.c	50;"	variable
-counter10ms	..\..\utils.c	30;"	variable
-counter500ms	..\..\stm8s_it.c	53;"	variable
-counter50ms	..\..\stm8s_it.c	52;"	variable
-debugCnt	..\..\main.c	42;"	variable
-dipA	..\..\utils.c	37;"	variable
-dipA_IN	..\..\utils.c	39;"	variable
-dipB	..\..\utils.c	38;"	variable
-dipB_IN	..\..\utils.c	40;"	variable
-dipRead	..\..\utils.c	67;"	function	signature:(uint8_t type)
+clock_setup	..\..\init.c	17;"	function	signature:(void)
+clock_setup	..\..\init.h	36;"	prototype	signature:(void)
+cnt	..\..\sound.c	19;"	variable
+count	..\..\stm8s_it.c	58;"	variable
+counter10ms	..\..\utils.c	28;"	variable
+counter500ms	..\..\stm8s_it.c	61;"	variable
+counter50ms	..\..\stm8s_it.c	60;"	variable
+debugCnt	..\..\main.c	25;"	variable
+dipA	..\..\utils.c	38;"	variable
+dipA_IN	..\..\utils.c	40;"	variable
+dipB	..\..\utils.c	39;"	variable
+dipB_IN	..\..\utils.c	41;"	variable
+dipRead	..\..\utils.c	72;"	function	signature:(uint8_t type)
 dipRead	..\..\utils.h	40;"	prototype	signature:(uint8_t type)
-dip_IN	..\..\utils.c	41;"	variable
+dip_IN	..\..\utils.c	42;"	variable
 disableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2716;"	macro
 disableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2725;"	macro
 disableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2735;"	macro
-duty	..\..\sound.c	17;"	variable
+duty	..\..\sound.c	18;"	variable
 enableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2715;"	macro
 enableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2724;"	macro
 enableInterrupts	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2734;"	macro
-flagCFG1	..\..\main.c	29;"	variable
-flagCFG2	..\..\main.c	30;"	variable
-flagCFG3	..\..\main.c	31;"	variable
-freq	..\..\sound.c	22;"	variable
-generalLee_song	..\..\sound.c	41;"	variable
+generalLee_song	..\..\sound.c	31;"	variable
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2722;"	macro
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2731;"	macro
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2741;"	macro
-init_setup	..\..\utils.c	119;"	function	signature:(void)
+i	..\..\utils.c	44;"	variable
+init_setup	..\..\utils.c	125;"	function	signature:(void)
 init_setup	..\..\utils.h	39;"	prototype	signature:(void)
-init_u_Port	..\..\init.c	131;"	function	signature:(void)
-init_u_Port	..\..\init.h	41;"	prototype	signature:(void)
-inputRead	..\..\utils.c	45;"	function	signature:(void)
+init_u_Port	..\..\init.c	128;"	function	signature:(void)
+init_u_Port	..\..\init.h	39;"	prototype	signature:(void)
+inputRead	..\..\utils.c	47;"	function	signature:(void)
 inputRead	..\..\utils.h	37;"	prototype	signature:(void)
 int16_t	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	211;"	typedef
 int32_t	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	212;"	typedef
@@ -3235,51 +3218,51 @@ interrupt_handler	stm8_interrupt_vector.c	11;"	member	struct:interrupt_vector	fi
 interrupt_handler_t	stm8_interrupt_vector.c	7;"	typedef	file:
 interrupt_instruction	stm8_interrupt_vector.c	10;"	member	struct:interrupt_vector	file:
 interrupt_vector	stm8_interrupt_vector.c	9;"	struct	file:
-j	..\..\utils.c	42;"	variable
-main	..\..\main.c	46;"	function	signature:(void)
-mainFsm	..\..\main.c	34;"	variable
-monofrequenza	..\..\sound.c	147;"	function	signature:( uint32_t f1)
-monofrequenza	..\..\sound.h	58;"	prototype	signature:( uint32_t f1)
-n	..\..\sound.c	25;"	variable
+j	..\..\utils.c	43;"	variable
+main	..\..\main.c	28;"	function	signature:(void)
+mainFsm	..\..\main.c	18;"	variable
+n	..\..\sound.c	20;"	variable
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2719;"	macro
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2728;"	macro
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2738;"	macro
-pausa	..\..\sound.c	153;"	function	signature:(void)
-pausa	..\..\sound.h	59;"	prototype	signature:(void)
-readADC1	..\..\init.c	160;"	function	signature:(uint16_t channel)
-readADC1	..\..\init.h	44;"	prototype	signature:(uint16_t channel)
+pause	..\..\sound.c	154;"	function	signature:(void)
+pause	..\..\sound.h	58;"	prototype	signature:(void)
+readADC1	..\..\init.c	152;"	function	signature:(uint16_t channel)
+readADC1	..\..\init.h	42;"	prototype	signature:(uint16_t channel)
 rim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2717;"	macro
 rim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2726;"	macro
 rim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2736;"	macro
 s16	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	222;"	typedef
 s32	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	221;"	typedef
 s8	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	223;"	typedef
-setAlternateBit	..\..\init.c	141;"	function	signature:(void)
-setAlternateBit	..\..\init.h	42;"	prototype	signature:(void)
+setAlternateBit	..\..\init.c	133;"	function	signature:(void)
+setAlternateBit	..\..\init.h	40;"	prototype	signature:(void)
+setFrequency	..\..\sound.c	148;"	function	signature:(uint32_t f1)
+setFrequency	..\..\sound.h	57;"	prototype	signature:( uint32_t f1)
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2718;"	macro
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2727;"	macro
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2737;"	macro
-songStep	..\..\sound.c	27;"	variable
-soundStone	..\..\sound.c	43;"	function	signature:(uint8_t num)
-soundStone	..\..\sound.h	57;"	prototype	signature:(uint8_t num)
-sweep	..\..\sound.c	23;"	variable
-sweep1k2_500	..\..\sound.h	67;"	prototype	signature:(void)
-sweep1k_2k	..\..\sound.h	65;"	prototype	signature:(void)
-sweep2k8_2k	..\..\sound.h	66;"	prototype	signature:(void)
-sweep2k_2k8	..\..\sound.h	61;"	prototype	signature:(void)
-sweep2k_2k8_reverse	..\..\sound.h	62;"	prototype	signature:(void)
-sweep500_1k2	..\..\sound.h	60;"	prototype	signature:(void)
-sweep500_1k5_2k7	..\..\sound.h	63;"	prototype	signature:(void)
-sweepCnt	..\..\sound.c	20;"	variable
-t	..\..\sound.c	26;"	variable
-timeout10ms	..\..\utils.c	20;"	variable
-timeout10msISR	..\..\utils.c	24;"	variable
-timeout1ms	..\..\utils.c	19;"	variable
-timeout1msISR	..\..\utils.c	23;"	variable
-timeout500ms	..\..\utils.c	22;"	variable
-timeout500msISR	..\..\utils.c	26;"	variable
-timeout50ms	..\..\utils.c	21;"	variable
-timeout50msISR	..\..\utils.c	25;"	variable
+song	..\..\sound.c	116;"	function	signature:(uint16_t note[])
+song	..\..\sound.h	67;"	prototype	signature:(uint16_t note[])
+songStep	..\..\sound.c	22;"	variable
+soundStone	..\..\sound.c	33;"	function	signature:(uint8_t num)
+soundStone	..\..\sound.h	56;"	prototype	signature:(uint8_t num)
+sweep1k2_500	..\..\sound.h	66;"	prototype	signature:(void)
+sweep1k_2k	..\..\sound.h	64;"	prototype	signature:(void)
+sweep2k8_2k	..\..\sound.h	65;"	prototype	signature:(void)
+sweep2k_2k8	..\..\sound.h	60;"	prototype	signature:(void)
+sweep2k_2k8_reverse	..\..\sound.h	61;"	prototype	signature:(void)
+sweep500_1k2	..\..\sound.h	59;"	prototype	signature:(void)
+sweep500_1k5_2k7	..\..\sound.h	62;"	prototype	signature:(void)
+t	..\..\sound.c	21;"	variable
+timeout10ms	..\..\utils.c	18;"	variable
+timeout10msISR	..\..\utils.c	22;"	variable
+timeout1ms	..\..\utils.c	17;"	variable
+timeout1msISR	..\..\utils.c	21;"	variable
+timeout500ms	..\..\utils.c	20;"	variable
+timeout500msISR	..\..\utils.c	24;"	variable
+timeout50ms	..\..\utils.c	19;"	variable
+timeout50msISR	..\..\utils.c	23;"	variable
 trap	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2720;"	macro
 trap	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2729;"	macro
 trap	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2739;"	macro

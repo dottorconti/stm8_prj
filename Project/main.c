@@ -6,7 +6,6 @@
 //	email: enrico.store@gmail.com
 //*************************************************/
 
-
 #include "stm8s.h"
 #include "stm8s_gpio.h"
 #include "stm8s_adc1.h"
@@ -16,22 +15,15 @@
 #include "utils.h"
 #include "sound.h"
 
-bool 				flagCFG1=0;
-bool 				flagCFG2=0;
-bool 				flagCFG3=0;
-
-uint16_t		cntCheck=0;
-uint8_t			mainFsm=1;//SEL_LED_TYPE;
+uint8_t	mainFsm=1;
 
 uint8_t S1_enable=0;
 uint8_t S2_enable=0;
 
 uint8_t SndDip=1;
 
-
 uint16_t debugCnt=0;
 uint16_t RAW_Data=0;
-/***********************MAIN*********************/
 
 void main(void)
 {
@@ -46,7 +38,6 @@ void main(void)
 		if (timeout50ms)
 		{
 			inputRead();
-		//	ADC1_StartConversion();		
 		}
 	
 		if (timeout10ms)
@@ -54,18 +45,27 @@ void main(void)
 			//RAW_data = readADC1(ADC1_CHANNEL_4);//ADC1_GetConversionValue();
 			switch (mainFsm)
 			{
-				case SELCFG: 			//SELEZIONA CONFIGURAZIONE
-				if ((S1_IN==0) && (S2_IN==0))
+				case SELCFG:
+				if ((S1_IN==1) && (S2_IN==1))
 				{
 					S1_enable 	= 0;
 					S2_enable 	= 0;
-					caseCnt 		= 0;
+				}
+				
+				if ((S1_IN==0) && (S2_IN==1))
+				{ 
+					S1_enable 	= 1;
+					S2_enable 	= 0;
+					SndDip = dipRead(0);
 				}
 				
 				if ((S1_IN==1) && (S2_IN==0))
 				{ 
-					duty = 50; 
-				}
+					S1_enable 	= 0;
+					S2_enable 	= 1;
+					SndDip = dipRead(1);
+				}				
+				
 				mainFsm=RUN;
 				break;
 				
