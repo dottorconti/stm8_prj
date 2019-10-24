@@ -16,7 +16,7 @@
 #include "sound.h"
 
 uint8_t	mainFsm=1;
-uint8_t 	channel		=	AIN3;
+uint8_t 	channel		=	AIN5;
 
 uint8_t S1_enable=0;
 uint8_t S2_enable=0;
@@ -24,6 +24,7 @@ uint8_t S2_enable=0;
 uint8_t SndDip=1;
 
 uint16_t debugCnt=0;
+uint16_t RAW_Data=0;
 
 void main(void)
 {
@@ -32,17 +33,7 @@ void main(void)
 	{
 		if (timeout500ms)
 		{
-			switch (channel)
-			{
-				case AIN3:
-				ADC_setup(ADC1_CHANNEL_3);
-				break;
-				
-				case AIN4:
-				ADC_setup(ADC1_CHANNEL_4);
-				break;			
-			}
-			ADC1_StartConversion();		
+			//nothing to do
 		}
 		
 		if (timeout50ms)
@@ -52,6 +43,7 @@ void main(void)
 	
 		if (timeout10ms)
 		{
+			//RAW_data = readADC1(ADC1_CHANNEL_4);//ADC1_GetConversionValue();
 			switch (mainFsm)
 			{
 				case SELCFG:

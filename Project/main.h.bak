@@ -37,22 +37,19 @@
 #define S1_DIP 0
 #define S2_DIP 1
 
-#define AIN3	3
-#define AIN4	4
-
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 extern bool 	flagCFG1;
 extern bool 	flagCFG2;
 extern bool 	flagCFG3;
 extern 				uint8_t mainFsm;
-extern uint8_t channel;
 
 extern	uint8_t S1_enable;
 extern	uint8_t S2_enable;
 extern 	uint8_t SndDip;
 extern  uint8_t duty;
 
+extern uint16_t RAW_Data;
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 

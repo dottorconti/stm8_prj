@@ -70,7 +70,7 @@ void GPIO_setup(void)
 
 	GPIO_Init(GPIOD, GPIO_PIN_1, GPIO_MODE_IN_FL_NO_IT);		// not used
 	GPIO_Init(GPIOD, GPIO_PIN_2, GPIO_MODE_IN_FL_NO_IT);		// not used
-	GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_IN_FL_NO_IT);    // out flash
+	GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_SLOW);    // out flash
 	GPIO_Init(GPIOD, GPIO_PIN_4, GPIO_MODE_IN_FL_NO_IT);  	// sw1_3
 	GPIO_Init(GPIOD, GPIO_PIN_5, GPIO_MODE_IN_FL_NO_IT); 		// sw1_2
 	GPIO_Init(GPIOD, GPIO_PIN_6, GPIO_MODE_IN_FL_NO_IT);		// sw1_1
@@ -161,6 +161,7 @@ void ADC_setup(uint8_t ch_sel)
 						DISABLE);
 						
 	ADC1_ITConfig(ADC1_IT_EOCIE, ENABLE);
+
 }
 
 void Read_Protect_Flash(void)

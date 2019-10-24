@@ -35,10 +35,11 @@ void TIM2_setup(void);
 void TIM4_setup(void);
 void clock_setup(void);
 void GPIO_setup(void);
-void ADC_setup(uint8_t ch_sel);
+//void ADC_setup(void);
 void init_u_Port(void);
 void setAlternateBit(void);
 void Read_Protect_Flash(void);
-
+uint16_t readADC1(uint16_t channel);
+void ADC_setup(uint8_t ch_sel);
 
 #endif

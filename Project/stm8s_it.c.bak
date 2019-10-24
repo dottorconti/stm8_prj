@@ -48,9 +48,6 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-
-uint16_t RAW_Data[2] = {0};
-
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -477,18 +474,7 @@ INTERRUPT_HANDLER(I2C_IRQHandler, 19)
     */
 		if (ADC1_GetFlagStatus(ADC1_FLAG_EOC))
 		{
-			switch (channel)
-			{
-				case AIN3:
-				RAW_Data[0] = ADC1_GetConversionValue();
-				channel = AIN4;
-				break;
-				
-				case AIN4:
-				RAW_Data[1] = ADC1_GetConversionValue();
-				channel = AIN3;
-				break;					
-			}
+			RAW_Data = ADC1_GetConversionValue();
 			ADC1_ClearFlag(ADC1_FLAG_EOC);
 		}
 		if (ADC1_GetFlagStatus(ADC1_FLAG_OVR))
