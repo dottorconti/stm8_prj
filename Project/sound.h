@@ -37,15 +37,29 @@
 #define END		1
 #define MUTE	0
 
-#define BPM 		320
-#define MINUTE 	60000
 
+#define MINUTE 	60000
+/*
+#define BPM 		320
 #define QQ 	((MINUTE/BPM)*4)/10
 #define DQ 	((MINUTE/BPM)*2)/10
 #define UQ 	((MINUTE/BPM))/10
 #define UO	((MINUTE/BPM)/2)/10
-//#define US
-//#define UT
+*/
+/*
+#define BPM 		320
+#define QQ 	75
+#define DQ 	37.5
+#define UQ 	18.75
+#define UO	9.37
+*/
+/*
+#define BPM 		120
+#define QQ 	200
+#define DQ 	100
+#define UQ 	50
+#define UO	25
+*/
 
 extern uint8_t 		duty;
 extern uint16_t 	caseCnt;
@@ -68,5 +82,5 @@ void song(uint16_t note[]);
 
 void birtdaySong(void);
 void hornGeneralLee(void);
-
+void changeBPM(uint16_t bpmVar);
 #endif

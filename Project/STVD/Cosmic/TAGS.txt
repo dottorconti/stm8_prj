@@ -3175,6 +3175,8 @@ assert_failed	..\..\stm8s_conf.h	105;"	prototype	signature:(uint8_t* file, uint3
 assert_param	..\..\stm8s_conf.h	103;"	macro
 assert_param	..\..\stm8s_conf.h	107;"	macro
 audio_test	..\..\sound.h	63;"	prototype	signature:(void)
+birtdaySong	..\..\sound.c	62;"	function	signature:(void)
+birtdaySong	..\..\sound.h	69;"	prototype	signature:(void)
 birthday_song	..\..\sound.c	26;"	variable
 blink	..\..\utils.c	29;"	variable
 bool	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	230;"	typedef	typeref:enum:__anon1
@@ -3204,6 +3206,8 @@ generalLee_song	..\..\sound.c	31;"	variable
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2722;"	macro
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2731;"	macro
 halt	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2741;"	macro
+hornGeneralLee	..\..\sound.c	95;"	function	signature:(void)
+hornGeneralLee	..\..\sound.h	70;"	prototype	signature:(void)
 i	..\..\utils.c	44;"	variable
 init_setup	..\..\utils.c	125;"	function	signature:(void)
 init_setup	..\..\utils.h	39;"	prototype	signature:(void)
@@ -3225,7 +3229,7 @@ n	..\..\sound.c	20;"	variable
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2719;"	macro
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2728;"	macro
 nop	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2738;"	macro
-pause	..\..\sound.c	154;"	function	signature:(void)
+pause	..\..\sound.c	135;"	function	signature:(void)
 pause	..\..\sound.h	58;"	prototype	signature:(void)
 readADC1	..\..\init.c	152;"	function	signature:(uint16_t channel)
 readADC1	..\..\init.h	42;"	prototype	signature:(uint16_t channel)
@@ -3237,12 +3241,11 @@ s32	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	221;"	typedef
 s8	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	223;"	typedef
 setAlternateBit	..\..\init.c	133;"	function	signature:(void)
 setAlternateBit	..\..\init.h	40;"	prototype	signature:(void)
-setFrequency	..\..\sound.c	148;"	function	signature:(uint32_t f1)
+setFrequency	..\..\sound.c	129;"	function	signature:(uint32_t f1)
 setFrequency	..\..\sound.h	57;"	prototype	signature:( uint32_t f1)
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2718;"	macro
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2727;"	macro
 sim	..\..\..\libraries\stm8s_stdperiph_driver\inc\stm8s.h	2737;"	macro
-song	..\..\sound.c	116;"	function	signature:(uint16_t note[])
 song	..\..\sound.h	67;"	prototype	signature:(uint16_t note[])
 songStep	..\..\sound.c	22;"	variable
 soundStone	..\..\sound.c	33;"	function	signature:(uint8_t num)

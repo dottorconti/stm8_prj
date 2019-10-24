@@ -307,7 +307,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
 		}
 	else
 		{
-			soundStone(10);
+			soundStone(50);
 		}
 
 

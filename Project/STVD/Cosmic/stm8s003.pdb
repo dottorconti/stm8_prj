@@ -3,7 +3,7 @@ DumpRWOnFly1=0
 DumpRWOnFly2=0
 DumpRWOnFly3=0
 DumpRWOnFly4=0
-WatchVariables1=jjFlag!0;jj!0;casecnt!0;dipA!0;dipB!0;S1_IN!0;S2_IN!0;duty!0;RAW_Data!0;SndDip!0;num!0;
+WatchVariables1=S1_enable!0;S2_enable!0;S1_IN!0;S2_IN!0;S3_IN!0;dipA!0;dipB!0;SndDip!0;S1!0;S2!0;S3!0;
 FormatWatch1=0
 FormatViewType1=1
 FormatViewAddress1=1
@@ -32,7 +32,7 @@ DisplayFormat=3
 ShowPeriphAddress=0
 ShowRegisterAddress=1
 [DebugState_v1-Debug.AddOn.St7McuIcdConf]
-McuName=STM8S001J3
+McuName=STM8S003F3
 [DebugState_v1-Debug.AddOn.IcdBreak]
 ICDBreak0=CR:0x00000000,BK1:0x00ffffff,BK2:0x00ffffff
 [DebugState_v1-Debug.AddOn.SteppingMode]
