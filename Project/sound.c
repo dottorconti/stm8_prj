@@ -15,7 +15,7 @@
 #include "utils.h"
 #include "sound.h"
 
-uint8_t 	duty				=	40;
+uint8_t 	duty				=	20;
 uint16_t 	cnt 				= 0;
 uint8_t 	n 					= 0;
 uint8_t 	t 					= 1;
@@ -62,7 +62,7 @@ uint16_t birthday_song[53] = {RE4,50,RE4,50,MI4,50,RE4,50,SOL4,50,FAd4,50,
 															RE4,50,RE4,50,RE4/2,50,SI4,50,SOL4,50,FAd4,50,MI4,50, 
 															DO4/2,50, DO4/2,50,SI4,50,SOL4,50,LA4,50,SOL4,50,MUTE,200,END};
 	*/														
-uint16_t generalLee_song[27] = {SOL4,19,MI4,19,DO4,38,DO4,38,DO4,19,RE4,19,MI4,19,FA4,19,SOL4,38,SOL4,38,SOL4,38,MI4,38,MUTE,200,END};
+uint16_t generalLee_song[27] = {SOL4,18,MI4,18,DO4,37,DO4,37,DO4,18,RE4,18,MI4,18,FA4,18,SOL4,37,SOL4,37,SOL4,37,MI4,37,MUTE,200,END};
 
 uint16_t vintage_song[23] = 
 {
